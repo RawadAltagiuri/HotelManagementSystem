@@ -37,7 +37,7 @@ public class NewJFrame extends javax.swing.JFrame {
         setBackground(new java.awt.Color(255, 255, 255));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 0, 102));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 255));
 
         jTextField1.setText("");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
