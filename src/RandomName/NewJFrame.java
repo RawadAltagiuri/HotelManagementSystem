@@ -46,7 +46,7 @@ public class NewJFrame extends javax.swing.JFrame {
             }
         });
 
-        jPasswordField1.setText("");
+        jPasswordField1.setText(null);
 
         jButton1.setBackground(new java.awt.Color(102, 102, 102));
         jButton1.setText("jButton1");
