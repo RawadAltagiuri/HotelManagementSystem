@@ -11,7 +11,7 @@ public class HomeFrame {
     public static void SetHomeFrame(){ //INITIATE THE HOME SCREEN
         Home lhome = new Home();
         lhome.setVisible(true);
-        
+    
     }
 }   
     
