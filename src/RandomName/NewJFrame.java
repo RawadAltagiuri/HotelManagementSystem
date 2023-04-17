@@ -77,7 +77,7 @@ public class NewJFrame extends javax.swing.JFrame {
         WarningLabel.setForeground(new java.awt.Color(255, 0, 51));
         WarningLabel.setText("WRONG INFORMATION");
         WarningLabel.setFocusable(false);
-        WarningLabel.setVisible(false);
+        WarningLabel.setVisible(true);
         jPanel1.add(WarningLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 140, 20));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -92,11 +92,11 @@ public class NewJFrame extends javax.swing.JFrame {
         boolean loginSuccessful = SQL.checkLogin(UserName, Password);
 
         if (loginSuccessful) {
-            Home lhome = new Home();
-            lhome.setVisible(true);
+            HomeFrame.SetHomeFrame();
+            dispose();
             
         } else {
-            WarningLabel.setVisible(true);
+            WarningLabel.setVisible(false);
         }
         
         
