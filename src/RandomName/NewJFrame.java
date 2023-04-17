@@ -37,7 +37,7 @@ public class NewJFrame extends javax.swing.JFrame {
         WarningLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("SIDEPANEL");
+        setTitle("Login");
         setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel1.setBackground(new java.awt.Color(0, 102, 102));
@@ -74,11 +74,10 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.add(passwordTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 190, 30));
 
         WarningLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        WarningLabel.setForeground(new java.awt.Color(255, 0, 51));
-        WarningLabel.setText("WRONG INFORMATION");
-        WarningLabel.setFocusable(false);
-        WarningLabel.setVisible(true);
-        jPanel1.add(WarningLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 140, 20));
+        WarningLabel.setForeground(new java.awt.Color(255, 0, 0));
+        WarningLabel.setText("Wrong Information");
+        WarningLabel.setVisible(false);
+        jPanel1.add(WarningLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 330, 110, 20));
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
         jPanel1.getAccessibleContext().setAccessibleParent(jPanel1);
@@ -96,7 +95,7 @@ public class NewJFrame extends javax.swing.JFrame {
             dispose();
             
         } else {
-            WarningLabel.setVisible(false);
+            WarningLabel.setVisible(true);
         }
         
         
@@ -142,7 +141,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel HotelNameLabel;
     private javax.swing.JLabel PasswordLabel;
     private javax.swing.JLabel UsernameLabel;
-    public javax.swing.JLabel WarningLabel;
+    private javax.swing.JLabel WarningLabel;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPasswordField passwordTextfield;
