@@ -3,10 +3,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package RandomName;
+import java.sql.*;
 
 /**
  *
- * @author rawad
+ * @author rawa4r2d
  */
 public class NewJFrame extends javax.swing.JFrame {
 
@@ -27,98 +28,79 @@ public class NewJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jTextField1 = new javax.swing.JTextField();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        UsernameLabel = new javax.swing.JLabel();
+        HotelNameLabel = new javax.swing.JLabel();
+        PasswordLabel = new javax.swing.JLabel();
+        usernameTextfield = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
+        passwordTextfield = new javax.swing.JPasswordField();
+        WarningLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SIDEPANEL");
         setBackground(new java.awt.Color(255, 255, 255));
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(204, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTextField1.setText("");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+        UsernameLabel.setFont(new java.awt.Font("Teko SemiBold", 0, 24)); // NOI18N
+        UsernameLabel.setText("Username");
+        jPanel1.add(UsernameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 210, 101, 50));
+
+        HotelNameLabel.setFont(new java.awt.Font("Teko SemiBold", 0, 48)); // NOI18N
+        HotelNameLabel.setForeground(new java.awt.Color(204, 204, 204));
+        HotelNameLabel.setText("Hotel Name");
+        HotelNameLabel.setAlignmentX(50.0F);
+        HotelNameLabel.setAlignmentY(50.0F);
+        HotelNameLabel.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(HotelNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 200, 52));
+
+        PasswordLabel.setFont(new java.awt.Font("Teko SemiBold", 0, 24)); // NOI18N
+        PasswordLabel.setText("Password");
+        jPanel1.add(PasswordLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 280, 101, -1));
+
+        usernameTextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jPanel1.add(usernameTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 220, 190, 30));
+
+        jButton2.setBackground(new java.awt.Color(0, 153, 153));
+        jButton2.setFont(new java.awt.Font("Teko SemiBold", 0, 14)); // NOI18N
+        jButton2.setText("Login");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
             }
         });
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 360, 110, 40));
+        jPanel1.add(passwordTextfield, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 280, 190, 30));
 
-        jPasswordField1.setText(null);
+        WarningLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        WarningLabel.setForeground(new java.awt.Color(255, 0, 51));
+        WarningLabel.setText("WRONG INFORMATION");
+        WarningLabel.setFocusable(false);
+        WarningLabel.setVisible(false);
+        jPanel1.add(WarningLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 330, 140, 20));
 
-        jButton1.setBackground(new java.awt.Color(102, 102, 102));
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel1.setText("wrong password");
-        jLabel1.setVisible(false);
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(149, 149, 149)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(jTextField1))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(177, 177, 177)
-                        .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 152, Short.MAX_VALUE)
-                        .addGap(120, 120, 120)))
-                .addGap(671, 671, 671))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(93, 93, 93)
-                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-                .addGap(93, 93, 93)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 88, Short.MAX_VALUE)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(130, 130, 130))
-        );
-
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
+        jPanel1.getAccessibleContext().setAccessibleParent(jPanel1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        String username = jTextField1.getText();
-        String password = jPasswordField1.getText();
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        String UserName = usernameTextfield.getText();
+        String Password = passwordTextfield.getText();
+        boolean loginSuccessful = SQL.checkLogin(UserName, Password);
 
-        if(username.equals("Rawad") & password.equals("1")){
-            Home Hframe = new Home();
-            Hframe.setVisible(true);
+        if (loginSuccessful) {
+            Home lhome = new Home();
+            lhome.setVisible(true);
+        } else {
+            WarningLabel.setVisible(true);
         }
-        else{
-            jLabel1.setVisible(true);
-        }
-
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+        
+        
+        
+    }//GEN-LAST:event_jButton2MouseClicked
     
     /**
      * @param args the command line arguments
@@ -156,10 +138,13 @@ public class NewJFrame extends javax.swing.JFrame {
     }
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel HotelNameLabel;
+    private javax.swing.JLabel PasswordLabel;
+    private javax.swing.JLabel UsernameLabel;
+    public javax.swing.JLabel WarningLabel;
+    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField passwordTextfield;
+    private javax.swing.JTextField usernameTextfield;
     // End of variables declaration//GEN-END:variables
 }
