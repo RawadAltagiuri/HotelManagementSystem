@@ -53,7 +53,7 @@ public class NewJFrame extends javax.swing.JFrame {
         HotelNameLabel.setAlignmentX(50.0F);
         HotelNameLabel.setAlignmentY(50.0F);
         HotelNameLabel.setVerticalTextPosition(javax.swing.SwingConstants.CENTER);
-        jPanel1.add(HotelNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 200, 52));
+        jPanel1.add(HotelNameLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 110, 310, 52));
 
         PasswordLabel.setFont(new java.awt.Font("Teko SemiBold", 0, 24)); // NOI18N
         PasswordLabel.setText("Password");
