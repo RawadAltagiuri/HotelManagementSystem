@@ -171,7 +171,7 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        CheckInTabPanel.setBackground(new java.awt.Color(0, 102, 102));
+        CheckInTabPanel.setBackground(new java.awt.Color(153, 0, 0));
         CheckInTabPanel.setLayout(new javax.swing.BoxLayout(CheckInTabPanel, javax.swing.BoxLayout.LINE_AXIS));
         jTabbedPane1.addTab("tab1", CheckInTabPanel);
 
