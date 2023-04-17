@@ -43,7 +43,7 @@ public class Home extends javax.swing.JFrame {
 
         jTabbedPane1.setBackground(new java.awt.Color(102, 102, 0));
 
-        jPanel1.setBackground(new java.awt.Color(0, 102, 0));
+        jPanel1.setBackground(new java.awt.Color(0, 102, 102));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
