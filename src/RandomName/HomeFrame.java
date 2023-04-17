@@ -14,21 +14,4 @@ public class HomeFrame {
     
     }
 }   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-}
 
