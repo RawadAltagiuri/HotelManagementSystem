@@ -94,6 +94,7 @@ public class NewJFrame extends javax.swing.JFrame {
         if (loginSuccessful) {
             Home lhome = new Home();
             lhome.setVisible(true);
+            
         } else {
             WarningLabel.setVisible(true);
         }
