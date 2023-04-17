@@ -171,11 +171,11 @@ public class Home extends javax.swing.JFrame {
             }
         });
 
-        CheckInTabPanel.setBackground(new java.awt.Color(153, 0, 0));
+        CheckInTabPanel.setBackground(new java.awt.Color(0, 102, 102));
         CheckInTabPanel.setLayout(new javax.swing.BoxLayout(CheckInTabPanel, javax.swing.BoxLayout.LINE_AXIS));
         jTabbedPane1.addTab("tab1", CheckInTabPanel);
 
-        Tab.setBackground(new java.awt.Color(51, 51, 51));
+        Tab.setBackground(new java.awt.Color(0, 102, 102));
         Tab.setMinimumSize(new java.awt.Dimension(150, 100));
 
         javax.swing.GroupLayout TabLayout = new javax.swing.GroupLayout(Tab);

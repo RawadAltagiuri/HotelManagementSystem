@@ -96,10 +96,7 @@ public class NewJFrame extends javax.swing.JFrame {
             
         } else {
             WarningLabel.setVisible(true);
-        }
-        
-        
-        
+        }    
     }//GEN-LAST:event_jButton2MouseClicked
     
     /**
