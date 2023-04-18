@@ -45,6 +45,7 @@ public class Home extends javax.swing.JFrame {
         setTitle("Home");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(0, 102, 102));
+        setMinimumSize(new java.awt.Dimension(500, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setBackground(new java.awt.Color(0, 51, 51));
@@ -208,7 +209,8 @@ public class Home extends javax.swing.JFrame {
 
         getContentPane().add(jTabbedPane1);
 
-        pack();
+        setSize(new java.awt.Dimension(1151, 673));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void CheckInTabButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckInTabButtonMouseClicked
