@@ -6,6 +6,7 @@ package RandomName;
 
 import java.awt.Color;
 import javax.swing.UIManager;
+import javax.swing.plaf.basic.BasicTabbedPaneUI;
 
 /**
  *
@@ -161,6 +162,7 @@ public class Home extends javax.swing.JFrame {
         jTabbedPane1.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         jTabbedPane1.setToolTipText("");
         jTabbedPane1.setAlignmentX(0.0F);
+        jTabbedPane1.setUI(new TabbedPaneNoTabsUI());// hide the tabs
         jTabbedPane1.setAutoscrolls(true);
         jTabbedPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jTabbedPane1.setMaximumSize(new java.awt.Dimension(3300, 32767));
@@ -210,7 +212,13 @@ public class Home extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(1151, 673));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    public class TabbedPaneNoTabsUI extends BasicTabbedPaneUI { // this makes the tabs disappear
+    @Override
+        protected void installDefaults() {
+            super.installDefaults();
+            tabAreaInsets.left = -100;
+        }
+    }
     private void CheckInTabButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckInTabButtonMouseClicked
         jTabbedPane1.setSelectedIndex(0);
         
