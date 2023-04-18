@@ -78,7 +78,7 @@ public class NewJFrame extends javax.swing.JFrame {
         usernameTextfield.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         usernameTextfield.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         usernameTextfield.setMargin(new java.awt.Insets(16, 120, 2, 6));
-        usernameTextfield.setPreferredSize(new java.awt.Dimension(130, 40));
+        usernameTextfield.setPreferredSize(new java.awt.Dimension(100, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -108,12 +108,13 @@ public class NewJFrame extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(0, 0, 27, 0);
         jPanel1.add(jButton2, gridBagConstraints);
 
-        passwordTextfield.setColumns(15);
+        passwordTextfield.setColumns(10);
+        passwordTextfield.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         passwordTextfield.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         passwordTextfield.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         passwordTextfield.setMargin(new java.awt.Insets(16, 120, 2, 6));
         passwordTextfield.setMinimumSize(new java.awt.Dimension(64, 26));
-        passwordTextfield.setPreferredSize(new java.awt.Dimension(150, 40));
+        passwordTextfield.setPreferredSize(new java.awt.Dimension(100, 30));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 2;
