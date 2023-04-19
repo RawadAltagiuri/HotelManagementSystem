@@ -47,7 +47,7 @@ public class NewJFrame extends javax.swing.JFrame {
 
         HotelNameLabel.setFont(new java.awt.Font("Teko SemiBold", 0, 48)); // NOI18N
         HotelNameLabel.setForeground(new java.awt.Color(204, 204, 204));
-        HotelNameLabel.setText("Hotel Name");
+        HotelNameLabel.setText("Hotel Transelvania");
         HotelNameLabel.setAlignmentX(50.0F);
         HotelNameLabel.setAlignmentY(50.0F);
         gridBagConstraints = new java.awt.GridBagConstraints();
