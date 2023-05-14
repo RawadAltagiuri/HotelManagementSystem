@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<jnlp spec="1.0" xmlns:jfx="http://javafx.com" href="HMS.jnlp">
+  <information>
+    <title>HMS</title>
+    <vendor>Rawad</vendor>
+    <description>null</description>
+    <offline-allowed/>
+  </information>
+  <resources>
+    <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
+    <jar href="HMS.jar" size="101569" download="eager" />
+    <jar href="lib\fontawesomefx-8.2.jar" size="180341" download="eager" />
+    <jar href="lib\mssql-jdbc-12.2.0.jre8.jar" size="1440368" download="eager" />
+    <jar href="lib\mysql-connector-j-8.0.31.jar" size="2515519" download="eager" />
+    <jar href="lib\ojdbc14.jar" size="1536554" download="eager" />
+    <jar href="lib\org-netbeans-modules-java-j2seproject-copylibstask.jar" size="111130" download="eager" />
+  </resources>
+  <jfx:javafx-desc  width="800" height="600" main-class="HMS.ManageApplication"  name="HMS" />
+  <update check="always"/>
+</jnlp>
