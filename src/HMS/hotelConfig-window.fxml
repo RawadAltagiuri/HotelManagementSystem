@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="hotelConfig_form" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageHotelConfig">
+   <children>
+      <StackPane layoutX="-118.0" layoutY="-93.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane>
+               <children>
+                  <BorderPane layoutX="239.0" layoutY="61.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <center>
+                        <AnchorPane prefHeight="970.0" prefWidth="1828.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane fx:id="hotel_configForm" layoutX="156.0" layoutY="79.0" prefHeight="956.0" prefWidth="1720.0" style="-fx-background-color: #F0EFEF;" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                 <children>
+                                    <AnchorPane fx:id="manage_rooms_btnForm" layoutX="213.0" layoutY="13.0" prefHeight="910.0" prefWidth="1508.0" styleClass="my-component" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                       <children>
+                                          <TableView fx:id="availableRooms_tableView" layoutX="470.0" layoutY="122.0" onMouseClicked="#avaialbleRoomsSelectData" prefHeight="734.0" prefWidth="960.0" style="-fx-font-size: 16px; -fx-border-color: grey; -fx-border-radius: 0px;" stylesheets="@DashboardDesign.css">
+                                            <columns>
+                                              <TableColumn fx:id="availableRooms_col_roomNumber" prefWidth="140.0" text="Room#" />
+                                              <TableColumn fx:id="availableRooms_col_roomType" prefWidth="140.0" text="Room Type" />
+                                                <TableColumn fx:id="availableRooms_col_status" prefWidth="140.0" text="Status" />
+                                                <TableColumn fx:id="availableRooms_col_price" prefWidth="140.0" text="Price($)" />
+                                            </columns>
+                                          </TableView>
+                                          <TextField fx:id="availabelRooms_search" layoutX="469.5" layoutY="79.0" prefHeight="25.0" prefWidth="283.0" promptText="Search" styleClass="search" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="469.5" />
+                                          <FontAwesomeIcon fill="#7ea875" glyphName="SEARCH" layoutX="482.0" layoutY="98.0" size="1.2em" />
+                                          <AnchorPane layoutX="87.0" layoutY="138.5" prefHeight="528.0" prefWidth="374.0" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="269.5" AnchorPane.topAnchor="138.5">
+                                             <children>
+                                                <TextField fx:id="availableRooms_roomNumber" layoutX="73.0" layoutY="105.0" prefHeight="25.0" prefWidth="143.0" styleClass="textfield" stylesheets="@DashboardDesign.css" />
+                                                <Label layoutX="5.0" layoutY="111.0" prefHeight="17.0" prefWidth="52.0" text="Room#:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="5.0" layoutY="148.0" prefHeight="17.0" prefWidth="68.0" text="Room Type:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <ComboBox fx:id="availableRooms_roomType" layoutX="73.0" layoutY="144.0" onAction="#availableRoomsRoomType" prefHeight="25.0" prefWidth="143.0" promptText="Choose" styleClass="combo-box" stylesheets="@DashboardDesign.css" />
+                                                <ComboBox fx:id="availableRooms_status" layoutX="73.0" layoutY="180.0" onAction="#availableroomStatus" prefHeight="25.0" prefWidth="143.0" promptText="Choose" styleClass="combo-box" stylesheets="@DashboardDesign.css" />
+                                                <TextField fx:id="availableRooms_price" layoutX="73.0" layoutY="212.0" prefHeight="25.0" prefWidth="143.0" styleClass="textfield" stylesheets="@DashboardDesign.css" />
+                                                <Label layoutX="6.0" layoutY="222.0" prefHeight="17.0" prefWidth="52.0" text="Price:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="availabelRooms_addBtn" layoutX="21.0" layoutY="268.0" mnemonicParsing="false" onAction="#availableRoomsAdd" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Add" />
+                                                <Button fx:id="availabelRooms_updateBtn" layoutX="129.0" layoutY="268.0" mnemonicParsing="false" onAction="#availableRoomsUpdate" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Update" />
+                                                <Label layoutX="5.0" layoutY="183.0" prefHeight="17.0" prefWidth="68.0" text="Status:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="availabelRooms_clearBtn" layoutX="21.0" layoutY="313.0" mnemonicParsing="false" onAction="#availableRoomsClear" onMouseClicked="#availableRoomsClear" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Clear" />
+                                                <Button fx:id="availabelRooms_deleteBtn" layoutX="129.0" layoutY="312.0" mnemonicParsing="false" onAction="#availableRoomsDelete" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Delete" />
+                                             </children>
+                                          </AnchorPane>
+                                          <Label layoutX="90.0" layoutY="64.0" styleClass="subMenu-header" text="Manage Rooms" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="-1.0" prefHeight="923.0" prefWidth="214.0" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                       <children>
+                                          <Label layoutX="37.0" layoutY="78.0" prefHeight="20.0" prefWidth="152.0" styleClass="subMenu-title" text="Hotel Configuration" textAlignment="CENTER" translateY="-13.0" />
+                                          <Group fx:id="manage_rooms_btn" layoutX="2.0" layoutY="133.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="-7.0" translateY="-13.0">
+                                             <children>
+                                                <Rectangle fx:id="btn_rectangle12" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" translateY="-13.0" width="212.0" />
+                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Manage Rooms" textFill="#21512a" translateY="-13.0" />
+                                             </children>
+                                          </Group>
+                                          <Group fx:id="dashboard_btn121" layoutX="12.0" layoutY="143.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="1.0" translateY="-13.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="175.0">
+                                             <children>
+                                                <Rectangle fx:id="btn_rectangle121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
+                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Manage Facilities" textFill="#21512a" />
+                                             </children>
+                                          </Group>
+                                       </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

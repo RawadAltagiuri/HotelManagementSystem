@@ -1,0 +1,63 @@
+.login-backgorund{
+    -fx-background-image: url("/javafxapplication3/login-page.png");
+    -fx-background-size: 100% 100%;
+}
+
+.white-bg{
+    -fx-background-color:#fff;
+    -fx-border-color:#000;
+    -fx-border-width: .4px .4px .4px 0px;
+}
+
+
+
+.left-form{
+    -fx-background-color: #28544B;
+    -fx-border-color:#000;
+    -fx-border-width:.4px 0px .4px .4px;
+}
+
+
+
+.textfield{
+    -fx-background-color:transparent;
+    -fx-text-fill:#fff;
+/*    -fx-border-color:#fff;
+    -fx-border-width:0px 0px .8px 0px;*/
+    -fx-font-size:20px;
+    -fx-font-family:"Tahoma";
+}
+
+.textfield:placeholder{
+    -fx-text-fill:#fff;
+}
+
+.textfield:focused{
+/*    -fx-border-color:linear-gradient(to bottom right, #686c89, #4f4c63);*/
+/*    -fx-border-width:0px 0px 1.5px 0px;*/
+}
+
+.login-btn{
+    -fx-background-color:transparent;         
+    -fx-text-fill:#fff;
+    -fx-font-size:20px;
+    -fx-cursor:hand;
+    -fx-background-radius:10;
+}
+
+
+.login-btn:hover{
+    -fx-background-color:linear-gradient(to bottom right, #744545, #4D2828);  
+}
+
+.close{
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+        -fx-font-size:20px;
+}
+
+.close:hover{
+    -fx-background-color:#4D2828;
+    -fx-font-size:20px;
+
+}
