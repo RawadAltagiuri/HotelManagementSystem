@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="dashboard_form" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageDashboard">
+   <children>
+      <StackPane layoutX="-118.0" layoutY="-93.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane>
+               <children>
+                  <BorderPane layoutX="239.0" layoutY="61.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <center>
+                        <AnchorPane prefHeight="970.0" prefWidth="1800.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <AnchorPane fx:id="dashboard_btnForm" prefHeight="551.0" prefWidth="800.0" styleClass="main-anchor" stylesheets="@DashboardDesign.css">
+                                 <children>
+                                    <AnchorPane layoutX="37.0" layoutY="27.0" prefHeight="143.0" prefWidth="774.0" styleClass="white-bg" stylesheets="@DashboardDesign.css">
+                                       <children>
+                                          <AnchorPane layoutX="14.0" layoutY="6.0" prefHeight="127.0" prefWidth="235.0" styleClass="nav-form">
+                                             <children>
+                                                <FontAwesomeIcon glyphName="CHECK" layoutX="23.0" layoutY="72.0" size="4em" />
+                                                <Label layoutX="71.0" layoutY="81.0" prefHeight="21.0" prefWidth="125.0" text="Today's book">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="dashboard_bookToday" layoutX="199.0" layoutY="42.0" prefHeight="26.0" prefWidth="10.0" text="0">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="22.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="270.0" layoutY="6.0" prefHeight="127.0" prefWidth="235.0" styleClass="nav-form">
+                                             <children>
+                                                <FontAwesomeIcon glyphName="MONEY" layoutX="14.0" layoutY="72.0" size="4em" />
+                                                <Label layoutX="49.0" layoutY="79.0" prefHeight="21.0" prefWidth="137.0" text="Today's Income">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="dashboard_incomeToday" layoutX="187.0" layoutY="42.0" text="\$0.0">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="22.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                          <AnchorPane layoutX="525.0" layoutY="6.0" prefHeight="127.0" prefWidth="235.0" styleClass="nav-form">
+                                             <children>
+                                                <FontAwesomeIcon glyphName="DOLLAR" layoutX="14.0" layoutY="72.0" size="4em" />
+                                                <Label layoutX="55.0" layoutY="79.0" prefHeight="21.0" prefWidth="125.0" text="Total Income">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="18.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="dashboard_totalIncome" layoutX="187.0" layoutY="42.0" text="\$0.0">
+                                                   <font>
+                                                      <Font name="Arial Bold" size="22.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </AnchorPane>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="37.0" layoutY="181.0" prefHeight="369.0" prefWidth="774.0" styleClass="white-bg" stylesheets="@DashboardDesign.css">
+                                       <children>
+                                          <AreaChart fx:id="dashboard_areaChart" layoutX="24.0" layoutY="-72.0" prefHeight="369.0" prefWidth="774.0" title="Data Income" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                             <xAxis>
+                                                <CategoryAxis side="BOTTOM" />
+                                             </xAxis>
+                                             <yAxis>
+                                                <NumberAxis side="LEFT" />
+                                             </yAxis>
+                                          </AreaChart>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </AnchorPane>
+                     </center>
+                  </BorderPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </StackPane>
+   </children>
+</AnchorPane>

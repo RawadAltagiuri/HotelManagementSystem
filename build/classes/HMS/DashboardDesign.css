@@ -1,0 +1,246 @@
+.top-form{
+    -fx-background-color:#fff;
+    -fx-border-color:#000; 
+    -fx-border-width:.4px .4px .3px .4px;
+}
+
+.nav-form{
+    -fx-background-color:linear-gradient(to bottom right, #285956, #285956);
+}
+
+.top-bar{
+    -fx-background-color:transparent;
+    -fx-border-color:#000;
+    -fx-border-width: 0px .0px .0px 0px;  
+}
+
+.nav-btn{
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Arial";
+    -fx-alignment:CENTER_LEFT;
+}
+
+.nav-btn:hover{
+    -fx-background-color:linear-gradient(to bottom right, #253835, #285950);  
+}
+
+.white-bg{
+    -fx-background-color:#fff;
+    -fx-background-radius:10px;
+}
+.shadow{
+    -fx-effect:dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 4, 0, 0, 0);
+}
+
+.card{
+    -fx-background-color:linear-gradient(to right, #444857, #537e90);
+    -fx-background-radius:5px;
+}
+
+.close{
+    -fx-background-color:transparent;
+    -fx-cursor:hand;
+}
+
+.close:hover{
+    -fx-background-color:#c91010;
+}
+
+.minimize{
+    -fx-background-color:transparent;
+    -fx-curosr:hand;
+}
+
+.minimize:hover{
+    -fx-background-color:#A8A1A1;
+}
+
+
+/*Availabale rooms*/
+
+.textfield{
+    -fx-background-color:transparent;
+    -fx-background-radius:8px;
+    -fx-border-color:#28544B;
+/*    -fx-border-radius:8px;*/
+    -fx-border-width:0px 0px .8px 0px;
+    -fx-font-size:14px;
+    -fx-font-family:"Tahoma";
+}
+
+.WarningText{
+        color: red;
+        -fx-text-fill: red;
+}
+
+
+.textfield:focused{
+    -fx-border-color:linear-gradient(to bottom right, #285956, #285956);
+    -fx-border-width:0px 0px 1.5px 0px;
+}
+
+.combo-box{
+    -fx-background-color:#fff;
+    -fx-background-radius:5px;
+    -fx-border-color:#28544B;
+    -fxborder-width:.5px;
+    -fx-border-radius:.5px; 
+    -fx-font-size:12px;
+    -fx-font-family:"Tahoma";
+}
+
+.combo-box:focused{
+    -fx-border-color:linear-gradient(to bottom right, #285956, #285956);
+    -fx-border-width:1.5px;
+}
+
+.add-btn{
+     -fx-background-color:linear-gradient(to bottom right, #285956, #285956);
+    -fx-background-radius:8px;
+    -fx-cursor:hand;
+    -fx-text-fill:#fff;
+    -fx-font-size:14px;
+    -fx-font-family:"Tahoma";
+}
+.add-btn:hover{
+    -fx-background-color:linear-gradient(to bottom right, #253835, #285950);
+    
+}
+
+.delete-btn{
+    -fx-background-color: linear-gradient(to bottom right, #FF4136, #FF4136);
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-text-fill: #fff;
+    -fx-font-size: 14px;
+    -fx-font-family: "Tahoma";
+}
+
+.table-view{
+    -fx-background-color:transparent;
+    -fx-padding:0px;
+    -fx-border-color:linear-gradient(to bottom right, #285950, #285950);
+    -fx-border-radius:8px;
+    
+}
+
+.table-view .column-header-background{
+    -fx-background-color:linear-gradient(to bottom right, #285950, #285950);
+    -fx-background-insets:0 0 0 0;
+    
+}
+
+.table-view .column-header, .filter{
+    -fx-background-color:transparent;
+    -fx-size:30px;
+}
+
+.table-view .column-header .label{
+    -fx-text-fill:#fff;
+}
+
+
+.search{
+    -fx-background-color:transparent;
+    -fx-background-radius:15px;
+    -fx-border-color:linear-gradient(to bottom right, #285950, #285950);
+    -fx-border-radius:10px 10px 10px 10px;
+    -fx-border-width:1px;
+    -fx-padding:0px 0px 0px 30px;
+    -fx-font-size:14px;
+}
+
+.search:focused{
+    -fx-border-width:1.8px;
+}
+.dashboard-btns{
+    -fx-fill:transparent;
+}
+.dashboard-btns:hover{
+    -fx-fill:#4D2828;
+}
+
+.my-component {
+    -fx-background-color:#fff;
+    -fx-border-radius:90px 0px 0px 0px;
+    -fx-border-width: 0.5px;
+    -fx-background-radius: 90px 0px 0px 0px;
+    -fx-border-color:grey;
+}
+
+.subMenu-title{
+    -fx-font-size:16px;
+    -fx-text-decoration: underline;
+    -fx-text-fill: #4D2828;
+    -fx-underline: true;
+    -fx-border-style: none;
+    -fx-font-weight: bold;
+    -fx-underline-color: red;
+}
+.subMenu-header{
+    -fx-font-size:18px;
+
+    -fx-text-fill: #4D2828;
+
+    -fx-border-style: none;
+    -fx-font-weight: bold;
+
+}
+
+.subMenu-btns:hover{
+    -fx-fill: linear-gradient(to bottom, #f0d1d1, #ffffff, #f0d1d1);
+}
+
+.main-anchor{
+    -fx-background-color:  #F0EFEF
+}
+
+.reservation-textArea{
+    -fx-border-color: #4D2828;
+    -fx-border-width: 0.2px;
+    -fx-font-size:14px;
+    -fx-text-fill: #4D2828;
+}
+
+.date-picker {
+    -fx-background-color: #F0EFEF;
+}
+
+.date-cell:selected {
+    -fx-background-color: green;
+}
+.reservation-btn1{
+    -fx-background-color:  #9e5151;
+    -fx-font-size:14px;
+    -fx-border-radius:20px 20px 20px 20px;
+    -fx-background-radius:10px;
+    -fx-text-fill: #fff;
+}
+.reservation-btn2{
+    -fx-background-color:  grey;
+    -fx-font-size:14px;
+    -fx-border-radius:20px 20px 20px 20px;
+    -fx-background-radius:10px;
+    -fx-text-fill: #fff;
+
+}
+.reservation-btn3{
+    -fx-background-color: #28544B;
+    -fx-font-size:14px;
+    -fx-border-radius:20px 20px 20px 20px;
+    -fx-background-radius:10px;
+    -fx-text-fill: #fff;
+
+}
+.reservation-btn1:hover{
+    -fx-background-color: #d18888;
+}
+.reservation-btn2:hover{
+    -fx-background-color: #9da6a4;
+}
+.reservation-btn3:hover{
+    -fx-background-color: #5c968a;
+}
