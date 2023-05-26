@@ -3,11 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/rawad/Documents/GitHub/Hotel-Bushra/src/HMS/ManageSettings.java</file>
-            <file>file:/C:/Users/rawad/Documents/GitHub/Hotel-Bushra/src/HMS/FXMLDocumentController.java</file>
-            <file>file:/C:/Users/rawad/Documents/GitHub/Hotel-Bushra/src/HMS/ManageApplication.java</file>
-            <file>file:/C:/Users/rawad/Documents/GitHub/Hotel-Bushra/src/HMS/ComboBox.java</file>
-            <file>file:/C:/Users/rawad/Documents/GitHub/Hotel-Bushra/src/HMS/GetUsersData.java</file>
+            <file>file:/C:/Users/rawad/Documents/GitHub/HotelSystem/src/HMS/ManageHotelConfig.java</file>
+            <file>file:/C:/Users/rawad/Documents/GitHub/HotelSystem/src/HMS/ManageReservations.java</file>
         </group>
     </open-files>
 </project-private>
