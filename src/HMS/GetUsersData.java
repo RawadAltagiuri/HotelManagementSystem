@@ -1,6 +1,8 @@
 package HMS;
 
 import java.sql.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 
@@ -28,6 +30,37 @@ public class GetUsersData{
         }
         return user;
     }
+    
+    public static ObservableList<User> fetchUsersFromDatabase() {
+        ObservableList<User> listData = FXCollections.observableArrayList();
+        User tableuser;
+         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/hotel", "root", "");
+             PreparedStatement prepare = conn.prepareStatement("SELECT * FROM user");
+                 
+             ResultSet result = prepare.executeQuery()){
+             while (result.next()) {
+                 
+                 tableuser = new User(
+                    result.getInt("id"),                 
+                    result.getString("username"),
+                    result.getString("password"),
+                    result.getString("name"),
+                    result.getString("lastname"),
+                    result.getString("occupation"));
+                 listData.add(tableuser);
+             }
+                } catch(Exception e)
+                {
+                    Alert alert;
+                    alert = new Alert(AlertType.ERROR);
+                    alert.setContentText(e.getMessage());
+                    alert.showAndWait();
+                    
+                }
+
+         return listData;
+    }
+    
     
     public static void deleteUser(String username) {
         try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/hotel", "root", "");
@@ -71,6 +104,25 @@ public class GetUsersData{
             System.out.println("Error connecting to database: " + e.getMessage());
             return null;
         }
+    }
+    
+    public static String getFullName(String username) {
+        String Fullname = "";
+        try (Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/hotel", "root", "");
+             PreparedStatement stmt = conn.prepareStatement("SELECT * FROM user WHERE username = ?")) {
+            stmt.setString(1, username);
+            ResultSet rs = stmt.executeQuery();
+            
+            // Extract data from the result set and create a User object
+            if (rs.next()) {
+                String name = rs.getString("name");
+                String surname = rs.getString("lastname");
+                Fullname = name + " " + surname;
+            }
+        } catch (SQLException e) {
+            
+        }
+        return Fullname;
     }
     
     public static void UpdateUser(String username, String password, String name, String lastname, String occupation) {
@@ -122,7 +174,7 @@ public class GetUsersData{
                 Alert alert;
                 alert = new Alert(AlertType.CONFIRMATION);
                 alert.setHeaderText(null);
-                alert.setContentText("Added succefully");
+                alert.setContentText("Added succefully, new employee ID is: " + id);
                 alert.showAndWait();
             } else {
                 Alert alert;
@@ -140,7 +192,7 @@ public class GetUsersData{
 
     
     
-    public static class User {
+    public static class User{
     private int id;
     private String username;
     private String password;
@@ -156,6 +208,7 @@ public class GetUsersData{
         this.surname = surname;
         this.occupation = occupation;
     }
+
     
     public int getId() {
         return id;
@@ -180,7 +233,7 @@ public class GetUsersData{
     public String getOccupation() {
         return occupation;
     }
-}
+    }
 }
 
 

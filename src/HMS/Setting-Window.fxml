@@ -3,7 +3,10 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,17 +15,34 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="Setting_form" prefHeight="860.0" prefWidth="1722.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageSettings">
+<AnchorPane id="AnchorPane" fx:id="Setting_form" prefHeight="900.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageSettings">
    <children>
-      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane prefHeight="900.0" prefWidth="1500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <BorderPane>
+            <BorderPane prefHeight="900.0" prefWidth="1500.0">
                <center>
-                  <AnchorPane BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="900.0" prefWidth="1500.0" BorderPane.alignment="CENTER">
                      <children>
-                        <AnchorPane fx:id="EditUsersInfo" layoutX="292.0" prefHeight="810.0" prefWidth="1430.0" styleClass="my-component" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                        <AnchorPane layoutX="16.0" prefHeight="923.0" prefWidth="214.0" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <children>
-                              <Label fx:id="TitleLabel" layoutX="114.0" layoutY="67.0" onMouseClicked="#func" styleClass="subMenu-header" text="Edit User's Information" />
+                              <Label layoutX="32.0" layoutY="78.0" prefHeight="20.0" prefWidth="101.0" styleClass="subMenu-title" text="Management" textAlignment="CENTER" translateX="13.0" translateY="-13.0" />
+                              <Group fx:id="CreateNewUserFormBtn" onMouseClicked="#CallCreateNewUserForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="1.0" translateY="-13.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="147.0">
+                                 <children>
+                                    <Rectangle fx:id="btn_rectangle121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
+                                    <Label layoutX="30.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="156.0" stylesheets="@DashboardDesign.css" text="Create New User" textFill="#21512a" translateX="13.0" />
+                                 </children>
+                              </Group>
+                              <Group fx:id="EditUserInfoFormBtn" layoutY="191.0" onMouseClicked="#CallEditUserForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0">
+                                 <children>
+                                    <Rectangle fx:id="btn_rectangle122" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" onMouseClicked="#FillUserTable" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" translateY="-13.0" width="212.0" />
+                                    <Label fx:id="Edit1" layoutX="30.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="142.0" stylesheets="@DashboardDesign.css" text="Edit User's information" textFill="#21512a" translateX="13.0" translateY="-13.0" />
+                                 </children>
+                              </Group>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="EditUsersInfo" styleClass="my-component" stylesheets="@DashboardDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                           <children>
+                              <Label fx:id="TitleLabel" layoutX="90.0" layoutY="64.0" onMouseClicked="#func" styleClass="subMenu-header" text="Edit User's Information" />
                               <TextField fx:id="DesiredUsername" layoutX="314.0" layoutY="131.0" prefHeight="35.0" prefWidth="204.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
                               <Label layoutX="114.0" layoutY="139.0" text="Enter username of desired user">
                                  <font>
@@ -45,37 +65,23 @@
                               <TextField fx:id="PasswordFieldChange" layoutX="572.0" layoutY="473.0" prefHeight="27.0" prefWidth="194.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
                               <TextField fx:id="IdNumberField" editable="false" layoutX="223.0" layoutY="474.0" prefHeight="27.0" prefWidth="194.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
                               <TextField fx:id="usernamefield" layoutX="222.0" layoutY="363.0" prefHeight="27.0" prefWidth="194.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
-                              <FontAwesomeIcon fill="#7ea875" glyphName="SEARCH" layoutX="497.0" layoutY="155.0" onMouseClicked="#FillTextWithUserData" size="1.2em" />
+                              <FontAwesomeIcon fill="#7ea875" glyphName="SEARCH" layoutX="497.0" layoutY="155.0" onMouseClicked="#FillTextWithUserData" size="1.2em" styleClass="DashboardDesign.css" />
                               <Label fx:id="WarningMessageUsername" layoutX="541.0" layoutY="139.0" styleClass="WarningText" text="USERNAME NOT FOUND!" visible="false" />
                               <Label fx:id="ConfirmationWarning1" layoutX="325.0" layoutY="586.0" prefHeight="18.0" prefWidth="156.0" styleClass="WarningText" text="WRONG PASSWORD!" visible="false" />
+                              <TableView fx:id="UsersTable" layoutX="972.0" layoutY="169.0" onMouseClicked="#FillTextWithUserDataTABLE" prefHeight="602.0" prefWidth="402.0">
+                                <columns>
+                                    <TableColumn fx:id="usernamecolumn" prefWidth="103.199951171875" text="Username" />
+                                  <TableColumn fx:id="namecolumn" prefWidth="84.0" text="Name" />
+                                  <TableColumn fx:id="surnamecolumn" prefWidth="118.4000244140625" text="Surname" />
+                                    <TableColumn fx:id="idcolumn" prefWidth="93.5999755859375" text="ID" />
+                                </columns>
+                              </TableView>
+                              <Button fx:id="Refresh" layoutX="1303.0" layoutY="125.0" mnemonicParsing="false" onAction="#FillUserTable" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Refresh" />
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="16.0" prefHeight="923.0" prefWidth="214.0" stylesheets="@DashboardDesign.css">
+                        <AnchorPane fx:id="CreateNewUserForm" styleClass="my-component" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                            <children>
-                              <Label layoutX="37.0" layoutY="78.0" prefHeight="20.0" prefWidth="152.0" styleClass="subMenu-title" text="Options &amp; Settings" textAlignment="CENTER" translateY="-13.0" />
-                              <Group fx:id="ProgramSettingsFormButton" layoutX="8.0" layoutY="283.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="-7.0" translateY="-13.0">
-                                 <children>
-                                    <Rectangle fx:id="btn_rectangle12" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" translateY="-13.0" width="212.0" />
-                                    <Label fx:id="Edit" layoutX="40.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="150.0" stylesheets="@DashboardDesign.css" text="Program Settings" textFill="#21512a" translateY="-13.0" />
-                                 </children>
-                              </Group>
-                              <Group fx:id="CreateNewUserFormBtn" layoutY="219.0" onMouseClicked="#CallCreateNewUserForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="1.0" translateY="-13.0" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="218.0">
-                                 <children>
-                                    <Rectangle fx:id="btn_rectangle121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
-                                    <Label layoutX="38.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="156.0" stylesheets="@DashboardDesign.css" text="Create New User" textFill="#21512a" />
-                                 </children>
-                              </Group>
-                              <Group fx:id="EditUserInfoFormBtn" layoutX="1.0" layoutY="159.0" onMouseClicked="#CallEditUserForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css">
-                                 <children>
-                                    <Rectangle fx:id="btn_rectangle122" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" translateY="-13.0" width="212.0" />
-                                    <Label fx:id="Edit1" layoutX="42.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="162.0" stylesheets="@DashboardDesign.css" text="Edit User's information" textFill="#21512a" translateY="-13.0" />
-                                 </children>
-                              </Group>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="CreateNewUserForm" layoutX="292.0" prefHeight="910.0" prefWidth="1430.0" styleClass="my-component" stylesheets="@DashboardDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="292.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
-                           <children>
-                              <Label fx:id="TitleLabel1" layoutX="114.0" layoutY="67.0" onMouseClicked="#func" styleClass="subMenu-header" text="Create new user" />
+                              <Label fx:id="TitleLabel1" layoutX="90.0" layoutY="64.0" onMouseClicked="#func" styleClass="subMenu-header" text="Create new user" />
                               <Line endX="669.199951171875" layoutX="233.0" layoutY="157.0" startX="-138.26669311523438" />
                               <Label fx:id="NameNewUser" layoutX="121.0" layoutY="209.0" onMouseClicked="#func" styleClass="subMenu-header" text="Name:" />
                               <Label fx:id="NameNewUser1" layoutX="121.0" layoutY="311.0" onMouseClicked="#func" styleClass="subMenu-header" text="Username:" />
@@ -86,27 +92,10 @@
                               <TextField fx:id="CreateNewUserSurnamefield" layoutX="616.0" layoutY="202.0" prefHeight="35.0" prefWidth="216.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
                               <TextField fx:id="CreateNewUsernameField" layoutX="236.0" layoutY="303.0" prefHeight="35.0" prefWidth="216.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
                               <TextField fx:id="CreateNewUserPasswordField" layoutX="621.0" layoutY="302.0" prefHeight="35.0" prefWidth="216.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
-                              <TextField fx:id="CreateNewUserOccupationfield" layoutX="235.0" layoutY="400.0" prefHeight="35.0" prefWidth="216.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
                               <TextField fx:id="CreateNewUserConfirm" layoutX="137.0" layoutY="502.0" prefHeight="35.0" prefWidth="216.0" promptText="Enter password for confirmation" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
                               <Button fx:id="AddUserBtn" layoutX="368.0" layoutY="503.0" mnemonicParsing="false" onAction="#AddUser" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Add" />
                               <Label fx:id="ConfirmationWarning" layoutX="438.0" layoutY="511.0" prefHeight="18.0" prefWidth="156.0" styleClass="WarningText" text="WRONG PASSWORD" visible="false" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane fx:id="settings_btnForm32" disable="true" prefHeight="877.0" prefWidth="1436.0" styleClass="my-component" stylesheets="@DashboardDesign.css" visible="false">
-                           <children>
-                              <Label fx:id="TitleLabel2" layoutX="114.0" layoutY="67.0" onMouseClicked="#func" styleClass="subMenu-header" text="2ND" />
-                              <TextField fx:id="firstName2" layoutX="324.0" layoutY="171.0" prefHeight="35.0" prefWidth="204.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
-                              <Label layoutX="114.0" layoutY="179.0" text="Enter username of desired user">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label layoutX="107.0" layoutY="122.0" text="User's detail options">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Line endX="669.199951171875" layoutX="233.0" layoutY="157.0" startX="-138.26669311523438" />
+                              <ComboBox fx:id="CreateNewUserComboBox" layoutX="237.0" layoutY="402.0" onMouseClicked="#employeeTitles" prefHeight="39.0" prefWidth="220.0" promptText="Pick an occupation" styleClass="combo-box" />
                            </children>
                         </AnchorPane>
                      </children>
@@ -115,6 +104,5 @@
             </BorderPane>
          </children>
       </StackPane>
-      <FontAwesomeIcon />
    </children>
 </AnchorPane>

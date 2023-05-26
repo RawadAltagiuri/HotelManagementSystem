@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="648" pageHeight="360" orientation="Landscape" columnWidth="608" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="869d656d-77b9-4dee-9da5-27a7f9c0fe2c">
+	<property name="ireport.zoom" value="2.196150000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="hotelParameter" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+customer_receipt.`id` AS customer_receipt_id,
+customer_receipt.`customer_num` AS customer_receipt_customer_num,
+customer_receipt.`total` AS customer_receipt_total,
+customer_receipt.`date` AS customer_receipt_date,
+customer.`CustomerID` AS customer_CustomerID,
+customer.`total` AS customer_total,
+customer.`FirstName` AS customer_FirstName,
+customer.`LastName` AS customer_LastName,
+customer.`PhoneNumber` AS customer_PhoneNumber,
+customer.`Email` AS customer_Email,
+customer.`RoomNumber` AS customer_RoomNumber,
+customer.`RoomType` AS customer_RoomType,
+customer.`AreaNumber` AS customer_AreaNumber,
+customer.`AreaType` AS customer_AreaType,
+customer.`CheckInDate` AS customer_CheckInDate,
+customer.`CheckOutDate` AS customer_CheckOutDate
+FROM 
+`customer_receipt` INNER JOIN 
+`customer` ON
+customer_receipt.`customer_num` = customer.`CustomerID`
+WHERE customer.`CustomerID` = $P{hotelParameter}]]>
+	</queryString>
+	<field name="customer_receipt_id" class="java.lang.Integer"/>
+	<field name="customer_receipt_customer_num" class="java.lang.Integer"/>
+	<field name="customer_receipt_total" class="java.lang.Double"/>
+	<field name="customer_receipt_date" class="java.sql.Date"/>
+	<field name="customer_CustomerID" class="java.lang.Integer"/>
+	<field name="customer_total" class="java.lang.Double"/>
+	<field name="customer_FirstName" class="java.lang.String"/>
+	<field name="customer_LastName" class="java.lang.String"/>
+	<field name="customer_PhoneNumber" class="java.lang.String"/>
+	<field name="customer_Email" class="java.lang.String"/>
+	<field name="customer_RoomNumber" class="java.lang.Integer"/>
+	<field name="customer_RoomType" class="java.lang.String"/>
+	<field name="customer_AreaNumber" class="java.lang.Integer"/>
+	<field name="customer_AreaType" class="java.lang.String"/>
+	<field name="customer_CheckInDate" class="java.sql.Date"/>
+	<field name="customer_CheckOutDate" class="java.sql.Date"/>
+	<group name="hotelFooters">
+		<groupFooter>
+			<band height="50">
+				<textField>
+					<reportElement x="122" y="30" width="170" height="20" forecolor="#990000" uuid="dea684a2-f708-4c99-9013-ee70fc4fb3f3"/>
+					<textElement>
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{customer_receipt_total}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="35" y="30" width="170" height="20" uuid="b88bda3d-9f04-43a1-bd31-1495c1b6ca00"/>
+					<textElement>
+						<font size="10" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Total Payment:$]]></text>
+				</staticText>
+			</band>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement x="238" y="24" width="146" height="35" forecolor="#006633" uuid="132395ab-a645-49f2-801d-1b5b2291d2a1"/>
+				<textElement textAlignment="Center">
+					<font fontName="NSimSun" size="20" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ground Zero]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="447" y="0" width="65" height="20" uuid="2cbd513f-4b7d-4193-96d4-31d52b9885e1"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Customer #:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="508" y="0" width="100" height="20" uuid="40258bc8-a487-4b4e-9b5a-17316eafa661"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_receipt_customer_num}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="402" y="2" width="54" height="12" uuid="66b42b4a-2ca1-4a98-868f-513d37d49f5b"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Room Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="2" width="30" height="12" uuid="a1c15dec-731e-4b82-aadb-27bea12a79f7"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Room #]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="413" y="15" width="57" height="11" uuid="724f8279-3e76-40da-bb4d-dd487ac72e5e"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_RoomType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="470" y="15" width="65" height="11" uuid="b22bf654-4bc4-4fba-921c-90c7a3700fad"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_RoomNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="297" y="15" width="57" height="11" uuid="4e03aadf-5532-473e-b958-6403ee69cddd"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_CheckInDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="349" y="15" width="66" height="11" uuid="b686f144-f0b6-4a8d-a22e-34bcfa2c90ce"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_CheckOutDate}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="37" y="0" width="526" height="1" uuid="00481d99-f763-48d6-9641-7cab31ee0eff"/>
+			</line>
+			<line>
+				<reportElement x="37" y="11" width="526" height="1" uuid="7a05ccef-de69-47db-b69e-d3abec79e4d7"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement x="37" y="26" width="526" height="1" uuid="eeb7aa2f-b421-4169-8300-c878f8d9bdbd"/>
+			</line>
+			<staticText>
+				<reportElement x="38" y="2" width="45" height="12" uuid="4d31d437-2681-4ee4-85cb-f6b4499bc4f2"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Receipt ID]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="84" y="2" width="51" height="12" uuid="8bd3bf7c-a486-4914-83a4-085eb91ac7c1"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[First Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="2" width="49" height="12" uuid="54e4beaa-2250-4f28-a394-849c2415522c"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Last Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="2" width="49" height="12" uuid="df2bfc45-a58f-4565-bb35-3fdcd168d54e"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Phone#]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="229" y="2" width="64" height="12" uuid="1e15885e-90e4-45a9-b02c-86e53ba9812b"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Email]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="293" y="2" width="52" height="12" uuid="f2e72328-9777-40be-98e2-129e1300e7a4"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Checked-In]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="345" y="2" width="58" height="12" uuid="4dda5180-a9d8-42c2-a8ec-5a7df0ad57d1"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Checked-Out]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="490" y="2" width="48" height="12" uuid="4ab9212f-77c8-4a33-8d5d-271bba25cb2e"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Area Type]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="540" y="2" width="30" height="12" uuid="11a70da8-2296-4a66-ada5-a0caaa2331d5"/>
+				<textElement textAlignment="Center">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Area #]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="53" y="15" width="83" height="11" uuid="14a05282-1f14-4793-9623-52260b0d475f"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_receipt_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="101" y="15" width="83" height="11" uuid="f7d764e6-4d13-4e33-870b-8bfb721ea7d6"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_FirstName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="152" y="15" width="66" height="11" uuid="b3aa5e25-6143-429f-9cd9-31454e4b4209"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_LastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="195" y="15" width="66" height="11" uuid="72339b4b-2427-4217-bba0-4cc534f83471"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_PhoneNumber}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="249" y="15" width="66" height="11" uuid="f3cced87-7aaf-48d0-a58a-5fbff7492ce3"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_Email}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="502" y="15" width="65" height="11" uuid="8cd16fd0-9b50-4d51-8a3b-d6a0f5c4c362"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_AreaType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="555" y="15" width="65" height="11" uuid="a6acc9b2-957c-4744-92c7-f1ab487f9054"/>
+				<textElement>
+					<font size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{customer_AreaNumber}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="15" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement x="349" y="12" width="199" height="15" forecolor="#006633" uuid="75cd8cae-51d8-48ab-9440-705eb8f9fd67"/>
+				<textElement>
+					<font fontName="Segoe Script" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[You can check-out anytime you like]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="421" y="26" width="154" height="15" forecolor="#006633" uuid="01f67ca1-bf23-478e-acbb-e121ea5e45e1"/>
+				<textElement>
+					<font fontName="Segoe Script" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[but you can never leave...]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="2" splitType="Stretch"/>
+	</summary>
+</jasperReport>

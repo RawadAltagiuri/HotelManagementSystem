@@ -15,13 +15,13 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="main_form" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.FXMLDocumentController">
+<AnchorPane id="AnchorPane" fx:id="main_form" onMouseMoved="#ChangeDisplayName" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.FXMLDocumentController">
    <children>
-      <StackPane layoutX="-118.0" layoutY="-93.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane maxHeight="1020.0" maxWidth="1920.0" prefHeight="1020.0" prefWidth="1920.0">
+            <AnchorPane>
                <children>
-                  <BorderPane fx:id="mainBorderPane" layoutX="239.0" layoutY="61.0" maxHeight="1020.0" maxWidth="1920.0" prefHeight="1020.0" prefWidth="1920.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <BorderPane fx:id="mainBorderPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <top>
                         <AnchorPane prefHeight="49.0" prefWidth="1000.0" BorderPane.alignment="CENTER">
                            <children>
@@ -35,8 +35,8 @@
                                        <graphic>
                                           <FontAwesomeIcon glyphName="MINUS" scaleY="1.5" size="1.2em" />
                                        </graphic></Button>
-                                    <FontAwesomeIcon fill="#4d2828" glyphName="BUILDING" layoutX="5.0" layoutY="38.0" scaleY="1.5" size="1.3em" AnchorPane.leftAnchor="5.0" />
-                                    <Label layoutX="25.0" layoutY="27.0" scaleY="1.5" text="Hotel Management System" AnchorPane.leftAnchor="25.0">
+                                    <FontAwesomeIcon fill="#4d2828" glyphName="BUILDING" layoutX="10.0" layoutY="38.0" scaleY="1.5" size="1.3em" AnchorPane.leftAnchor="10.0" />
+                                    <Label layoutX="30.0" layoutY="27.0" scaleY="1.5" text="Hotel Management System" AnchorPane.leftAnchor="30.0">
                                        <font>
                                           <Font name="Tahoma" size="12.0" />
                                        </font>
@@ -47,37 +47,25 @@
                         </AnchorPane>
                      </top>
                      <left>
-                        <AnchorPane prefHeight="713.0" prefWidth="137.0" BorderPane.alignment="CENTER">
+                        <AnchorPane>
                            <children>
-                              <AnchorPane layoutY="-1.0" prefHeight="938.0" prefWidth="204.0" styleClass="nav-form" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane prefHeight="971.0" styleClass="nav-form" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
                                     <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d2828" height="39.0" layoutX="16.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" width="167.0" />
-                                    <Text fill="WHITE" layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ground Zero" textAlignment="CENTER" wrappingWidth="146.13671875">
+                                    <Text fx:id="hotel_name1" fill="WHITE" layoutX="26.0" layoutY="27.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ground Zero" textAlignment="CENTER" wrappingWidth="146.13671875">
                                        <font>
                                           <Font name="Maiandra GD" size="20.0" />
                                        </font>
                                     </Text>
-                                    <Group layoutX="15.0" layoutY="61.0" translateX="22.0" translateY="24.0">
+                                    <Group layoutX="15.0" layoutY="61.0" translateX="22.0" translateY="27.0">
                                        <children>
-                                          <Circle fill="#4abc1e" layoutX="-2.0" layoutY="3.0" radius="4.0" stroke="BLACK" strokeType="INSIDE" translateX="45.0" translateY="11.0" />
-                                          <Label fx:id="profileUsername" layoutX="-6.0" text="Joel Miller" textFill="WHITE" translateX="46.0" translateY="-13.0">
+                                          <Label fx:id="profileUsername" layoutX="-6.0" layoutY="6.0" prefHeight="16.0" prefWidth="113.0" text="Joel Miller" textFill="WHITE" translateX="62.0" translateY="-13.0">
                                              <font>
                                                 <Font name="Arial Bold" size="14.0" />
                                              </font>
                                           </Label>
-                                          <Circle fx:id="profilePic" fill="WHITE" layoutX="3.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" />
-                                          <Label fx:id="online_status" layoutY="3.0" text="Online" textFill="WHITE" translateX="51.0" translateY="5.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="10.0" />
-                                             </font>
-                                          </Label>
-                                          <FontAwesomeIcon fill="WHITE" glyphName="EDIT" layoutX="-2.0" layoutY="4.0" translateX="102.0" translateY="15.0" wrappingWidth="8.0" />
-                                          <Label layoutX="-3.0" layoutY="3.0" text="Edit" textFill="WHITE" translateX="119.0" translateY="6.0">
-                                             <font>
-                                                <Font name="Arial Bold" size="10.0" />
-                                             </font>
-                                          </Label>
-                                          <ImageView fitHeight="50.0" fitWidth="46.0" layoutX="-19.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+                                          <Circle fx:id="profilePic" fill="WHITE" layoutX="3.0" radius="25.0" stroke="BLACK" strokeType="INSIDE" translateX="16.0" />
+                                          <ImageView fitHeight="50.0" fitWidth="46.0" layoutX="-19.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true" translateX="16.0">
                                              <image>
                                                 <Image url="@imgs/profile-pic.png" />
                                              </image>
@@ -87,85 +75,50 @@
                                     <Group fx:id="dashboard_btn" layoutY="130.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" translateY="2.0" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="130.0">
                                        <children>
                                           <Rectangle fx:id="btn_rectangle" arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="120.0" text="Dashboard" textFill="WHITE" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="DASHBOARD" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="6.0" />
+                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="120.0" text="Dashboard" textFill="WHITE" translateX="6.0" />
                                        </children>
                                     </Group>
                                     <Group fx:id="reservations_btn" layoutY="173.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.topAnchor="173.0">
                                        <children>
                                           <Rectangle fx:id="btn_rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#4d282800" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="CALENDAR" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" text="Reservstions" textFill="WHITE" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="CALENDAR" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="6.0" />
+                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" text="Reservstions" textFill="WHITE" translateX="6.0" />
                                        </children>
                                     </Group>
-                                    <Group fx:id="rooms_btn" layoutY="222.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.topAnchor="216.0">
-                                       <children>
-                                          <Rectangle fx:id="btn_rectangle11" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="BED" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Rooms" textFill="WHITE" />
-                                       </children>
-                                    </Group>
-                                    <Group fx:id="events_btn" layoutY="258.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.topAnchor="259.0">
-                                       <children>
-                                          <Rectangle fx:id="btn_rectangle111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="BIRTHDAY_CAKE" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Events" textFill="WHITE" />
-                                       </children>
-                                    </Group>
-                                    <Group fx:id="dashboard_btn1111" layoutX="5.0" layoutY="309.0" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="302.0">
+                                    <Group fx:id="guests_btn" layoutX="5.0" layoutY="309.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="210.0">
                                        <children>
                                           <Rectangle fx:id="btn_rectangle1111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="USER_PLUS" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Guests" textFill="WHITE" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="USER_PLUS" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="6.0" />
+                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Guests" textFill="WHITE" translateX="6.0" />
                                        </children>
                                     </Group>
-                                    <Group fx:id="dashboard_btn11111" layoutX="15.0" layoutY="319.0" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="345.0">
-                                       <children>
-                                          <Rectangle fx:id="btn_rectangle11111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="MONEY" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Billing &amp; Payment" textFill="WHITE" />
-                                       </children>
-                                    </Group>
-                                    <Group fx:id="dashboard_btn111111" layoutX="25.0" layoutY="329.0" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="388.0">
-                                       <children>
-                                          <Rectangle fx:id="btn_rectangle111111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="FILE_TEXT_ALT" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="146.0" text="Reporting &amp; Analytics" textFill="WHITE" />
-                                       </children>
-                                    </Group>
-                                    <Group fx:id="staff_btn" layoutX="35.0" layoutY="339.0" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="431.0">
+                                    <Group fx:id="staff_btn" layoutX="35.0" layoutY="339.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="250.0">
                                        <children>
                                           <Rectangle fx:id="btn_rectangle1111111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Staff" textFill="WHITE" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="USERS" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="6.0" />
+                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Staff" textFill="WHITE" translateX="6.0" />
                                        </children>
                                     </Group>
-                                    <Group fx:id="dashboard_btn11111111" layoutX="45.0" layoutY="349.0" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="474.0">
-                                       <children>
-                                          <Rectangle fx:id="btn_rectangle11111111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="SHIELD" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Whatever" textFill="WHITE" />
-                                       </children>
-                                    </Group>
-                                    <Group fx:id="hotelConfig_btn" layoutX="55.0" layoutY="359.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="517.0">
+                                    <Group fx:id="hotelConfig_btn" layoutX="55.0" layoutY="359.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="290.0">
                                        <children>
                                           <Rectangle fx:id="hotel_con" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="205.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="BUILDING" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Hotel Configuration" textFill="WHITE" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="BUILDING" layoutX="22.0" layoutY="24.714279174804688" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="6.0" />
+                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="121.0" text="Hotel Configuration" textFill="WHITE" translateX="6.0" />
                                        </children>
                                     </Group>
-                                    <Group fx:id="logout_btn" layoutX="26.0" layoutY="693.0" onMouseClicked="#logout" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" translateX="106.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+                                    <Group fx:id="logout_btn" layoutX="-19.0" onMouseClicked="#logout" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" translateX="112.0" AnchorPane.bottomAnchor="0.0">
                                        <children>
-                                          <Rectangle fx:id="btn_rectangle1111111111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="12.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" translateY="2.0" width="75.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="29.0" layoutY="27.0" mouseTransparent="true" scaleX="1.5" scaleY="1.5" />
-                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="45.0" text="Logout" textFill="WHITE" />
+                                          <Rectangle fx:id="btn_rectangle1111111111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" translateX="23.0" width="90.0" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="SIGN_OUT" layoutX="29.0" layoutY="27.0" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="7.0" translateY="-1.0" />
+                                          <Label layoutX="48.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="45.0" text="Logout" textFill="WHITE" translateX="7.0" />
                                        </children>
                                     </Group>
-                                    <Group fx:id="settings_btn" layoutY="932.0" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" translateX="2.0" AnchorPane.bottomAnchor="0.0">
+                                    <Group fx:id="settings_btn" onMouseClicked="#switchForm" styleClass="dashboard-btns" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0">
                                        <children>
-                                          <Rectangle fx:id="btn_rectangle11111111111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="96.0" />
-                                          <FontAwesomeIcon fill="WHITE" glyphName="GEARS" layoutX="12.0" layoutY="25.0" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="-5.0" />
-                                          <Label layoutX="32.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="77.0" text="Management" textFill="WHITE" translateX="-5.0" />
+                                          <Rectangle fx:id="btn_rectangle11111111111" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="dashboard-btns" width="116.0" />
+                                          <FontAwesomeIcon fill="WHITE" glyphName="GEARS" layoutX="4.0" layoutY="25.0" mouseTransparent="true" scaleX="1.5" scaleY="1.5" translateX="11.0" />
+                                          <Label layoutX="24.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="77.0" text="Management" textFill="WHITE" translateX="14.0" />
                                        </children>
                                     </Group>
                                  </children>

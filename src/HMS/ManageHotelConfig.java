@@ -4,6 +4,8 @@
  */
 package HMS;
 
+import static HMS.FXMLDocumentController.getglobaluser;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,6 +17,8 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -33,6 +37,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Screen;
@@ -62,9 +67,6 @@ public class ManageHotelConfig implements Initializable {
     
     @FXML
     private Button reservations_btn;
-    
-    @FXML
-    private Circle profilePic;
     
     @FXML
     private Button customers_btn;
@@ -165,6 +167,60 @@ public class ManageHotelConfig implements Initializable {
     @FXML
     private AnchorPane hotelConfig_form;
     
+    @FXML
+    private AnchorPane manage_rooms;
+    
+// -------------facilities---------------------
+        @FXML
+    private Button area_add_btn;
+
+    @FXML
+    private TextField area_capacity;
+
+    @FXML
+    private Button area_clear_btn;
+
+    @FXML
+    private Button area_delete_btn;
+
+    @FXML
+    private TextField area_num;
+
+    @FXML
+    private TextField area_price;
+
+    @FXML
+    private ComboBox<?> area_status;
+
+    @FXML
+    private ComboBox<?> area_type;
+
+    @FXML
+    private Button area_update_btn;
+
+    @FXML
+    private TableColumn<?, ?> areas_col_capacity;
+
+    @FXML
+    private TableColumn<?, ?> areas_col_num;
+
+    @FXML
+    private TableColumn<?, ?> areas_col_price;
+
+    @FXML
+    private TableColumn<?, ?> areas_col_status;
+
+    @FXML
+    private TableColumn<?, ?> areas_col_type;
+    
+    @FXML
+    private TextField facilities_search;
+    
+    @FXML
+    private AnchorPane manage_facilities;
+            
+    @FXML
+    private TableView<GetFacilitiesData> area_tableView;
     
     private Connection connect;
     private PreparedStatement prepare;
@@ -179,7 +235,8 @@ public class ManageHotelConfig implements Initializable {
     private double x = 0;
     private double y = 0;
     
-    
+    private ObservableList<GetFacilitiesData> areaDataList;
+    private String areaType[] = {"Bar", "Big Hall", "Conference Room", "Fitness Center", "Small Hall", "Spa", "Swimming Pool"};   
     
 
 
@@ -196,9 +253,9 @@ public class ManageHotelConfig implements Initializable {
                 GetRoomData roomD;
                 roomD = new GetRoomData(
                         result2.getInt("RoomNumber"),                 
-                         result2.getString("Type"),
-                         result2.getString("Availability"),
-                         result2.getDouble("Price"));
+                        result2.getString("Type"),
+                        result2.getString("Availability"),
+                        result2.getDouble("Price"));
                 listData.add(roomD);
             }
         } catch(Exception e){e.printStackTrace();}
@@ -221,11 +278,43 @@ public class ManageHotelConfig implements Initializable {
             availableRooms_tableView.setItems(roomDataList);
         }
         else{
-
+            return;
         }
     }
     
-    
+    public void roomsSearch()
+    { //connect with search bar in the guests fxml file (On Key Typed)
+
+        FilteredList<GetRoomData> filter = new FilteredList<>(roomDataList, e -> true);
+        
+        availableRooms_search.textProperty().addListener((Observable, OldValue, newValue) ->{
+            
+            filter.setPredicate(predicateArea ->{
+                
+                if(newValue == null && newValue.isEmpty()){
+                    return true;
+                }
+                String searchKey = newValue.toLowerCase();
+                
+                if(predicateArea.getRoom().toString().contains(searchKey)){
+                    return true;
+                }else if(predicateArea.getRoomType().toLowerCase().contains(searchKey)){
+                    return true;
+                }else if(predicateArea.getStatus().toLowerCase().contains(searchKey)){
+                    return true;
+                }else if(predicateArea.getPrice().toString().contains(searchKey)){
+                    return true;
+                }else
+                {
+                    return false;
+                }
+   
+            });
+        });  
+        SortedList<GetRoomData> sortList = new SortedList<>(filter);
+        sortList.comparatorProperty().bind(availableRooms_tableView.comparatorProperty());
+        availableRooms_tableView.setItems(sortList); 
+    }
     
     public void avaialbleRoomsSelectData(){  //retrieves the data of a selected row from a TableView of available rooms and displays the data in relevant input fields for further editing or updating.
         
@@ -262,6 +351,19 @@ public class ManageHotelConfig implements Initializable {
         
     
     public void availableRoomsAdd(){  //adds a new room record to the database table "room".
+        
+        String manager = "Manager";
+        String temp = getglobaluser();
+        String occup = GetUsersData.getOccupation(temp);
+        if(!occup.equals(manager)){
+            Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("User does not have authority for this action");
+                alert.showAndWait();
+                return;
+        }
+        
         String sql = "INSERT INTO `room`(`RoomNumber`, `Type`, `Availability`, `price`) VALUES (?,?,?,?)"; //inserts into the database after taking input from user
         
         connect = ManageDatabase.connectDb();
@@ -329,7 +431,7 @@ public class ManageHotelConfig implements Initializable {
         String status1 = (String)availableRooms_status.getSelectionModel().getSelectedItem();
         String price1 = availableRooms_price.getText();
         String roomNum1 = availableRooms_roomNumber.getText();
-        String sql = "UPDATE `room` SET `Type`= '"+type1+"'  ,`Availability`= '"+status1+"',`Price`='"+price1+"' WHERE `RoomNumber`= '"+roomNum1+"' "; //update the database
+        String sql = "UPDATE `room` SET `Type`= '"+type1+"'  , `Availability`= '"+status1+"',`Price`='"+price1+"' WHERE `RoomNumber`= '"+roomNum1+"' "; //update the database
         connect = ManageDatabase.connectDb();
 
         try 
@@ -365,6 +467,17 @@ public class ManageHotelConfig implements Initializable {
     
     public void availableRoomsDelete() //function to delete the data for the rooms
     {    
+        String manager = "Manager";
+        String temp = getglobaluser();
+        String occup = GetUsersData.getOccupation(temp);
+        if(!occup.equals(manager)){
+            Alert alert;
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText("User does not have authority for this action");
+                alert.showAndWait();
+                return;
+        }
         String type1 = (String)availableRooms_roomType.getSelectionModel().getSelectedItem(); //gets input from the user
         String status1 = (String)availableRooms_status.getSelectionModel().getSelectedItem();
         String price1 = availableRooms_price.getText();
@@ -440,18 +553,328 @@ public class ManageHotelConfig implements Initializable {
         }
         ObservableList list = FXCollections.observableArrayList(listData);
         
-        availableRooms_status.setItems(list);
-        
+        availableRooms_status.setItems(list);   
+        area_status.setItems(list);   
     }
     
-
-
+//    ----------------------------facilities methods---------------------------------------
+ 
+    
+       public ObservableList<GetFacilitiesData> facilitiesListData() {
+        ObservableList<GetFacilitiesData> listData = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM `area`";
+   
+        try (Connection connection = ManageDatabase.connectDb();
+            PreparedStatement prepare2 = connection.prepareStatement(sql);
+            ResultSet result2 = prepare2.executeQuery())
+        {
+            while (result2.next()) {
+                GetFacilitiesData areaD;
+                areaD = new GetFacilitiesData(
+                        result2.getInt("AreaNumber"),                 
+                        result2.getString("Type"),
+                        result2.getString("Availability"),
+                        result2.getInt("Capacity"),
+                        result2.getDouble("Price"));
+                listData.add(areaD);
+            }
+        } catch(Exception e){e.printStackTrace();}
+        
+        return listData;
+    } 
     
     
+        public void facilitiesShowData(){
+            areaDataList = facilitiesListData();
+
+
+            if (areaDataList != null) {
+                areas_col_num.setCellValueFactory(new PropertyValueFactory<>("areaNum"));
+                areas_col_type.setCellValueFactory(new PropertyValueFactory<>("areaType"));
+                areas_col_capacity.setCellValueFactory(new PropertyValueFactory<>("capacity"));
+                areas_col_status.setCellValueFactory(new PropertyValueFactory<>("status"));
+                areas_col_price.setCellValueFactory(new PropertyValueFactory<>("price"));
+
+                area_tableView.setItems(areaDataList);
+            }
+            else{
+                return;
+            }
+        }
+    
+     public void facilitiesSearch()
+    { //connect with search bar in the guests fxml file (On Key Typed)
+        FilteredList<GetFacilitiesData> filter = new FilteredList<>(areaDataList, e -> true);
+        
+        facilities_search.textProperty().addListener((Observable, OldValue, newValue) ->{
+            
+            filter.setPredicate(predicateArea ->{
+                
+                if(newValue == null && newValue.isEmpty()){
+                    return true;
+                }
+                String searchKey = newValue.toLowerCase();
+                
+                if(predicateArea.getAreaNum().toString().contains(searchKey)){
+                    return true;
+                }else if(predicateArea.getAreaType().toLowerCase().contains(searchKey)){
+                    return true;
+                }else if(predicateArea.getStatus().toLowerCase().contains(searchKey)){
+                    return true;
+                }else if(predicateArea.getCapacity().toString().contains(searchKey)){
+                    return true;
+                }else if(predicateArea.getPrice().toString().contains(searchKey)){
+                    return true;
+                }else
+                {
+                    return false;
+                }
+   
+            });
+        });  
+        SortedList<GetFacilitiesData> sortList = new SortedList<>(filter);
+        sortList.comparatorProperty().bind(area_tableView.comparatorProperty());
+        area_tableView.setItems(sortList);  
+    }   
+    
+        public void facilitiesSelectData(){
+        
+        GetFacilitiesData areaD  = area_tableView.getSelectionModel().getSelectedItem();
+        int num = area_tableView.getSelectionModel().getSelectedIndex();
+        
+        if(num < 0 || num >= areaDataList.size()){
+            return;
+        }
+        
+        area_num.setText(String.valueOf(areaD.getAreaNum()));          
+        area_capacity.setText(String.valueOf(areaD.getCapacity())); 
+        area_price.setText(String.valueOf(areaD.getPrice())); 
+        
+        String statusToSelect = areaD.getStatus();
+        String typeToSelect = areaD.getAreaType();
+        ObservableList<?> type = area_type.getItems();
+        ObservableList<?> status = area_status.getItems();
+
+        for (int i = 0; i < status.size(); i++) {
+            if (status.get(i).equals(statusToSelect)) {
+                area_status.getSelectionModel().select(i);
+                break;
+            }
+        }
+        for (int i = 0; i < type.size(); i++) {
+            if (type.get(i).equals(typeToSelect)) {
+                area_type.getSelectionModel().select(i);
+                break;
+            }
+        }
+  
+    }
+    
+        
+    
+    public void facilitiesAdd(){
+        String sql = "INSERT INTO `area`(`AreaNumber`, `Type`, `Availability`, `Capacity`, `price`) VALUES (?,?,?,?,?)";
+        
+        connect = ManageDatabase.connectDb();
+        
+        try{
+            
+            String areaNumber = area_num.getText();
+            String type = (String)area_type.getSelectionModel().getSelectedItem();
+            String status = (String)area_status.getSelectionModel().getSelectedItem();
+            String capacity = area_capacity.getText();
+            String price = area_price.getText();
+    
+            Alert alert;
+            //checking if there are empty fields
+            
+            if(areaNumber== null || type== null || status== null || price== null || capacity== null){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please fill all blank fields");
+                alert.showAndWait();
+                
+                
+            }else{
+                
+                String check = "SELECT AreaNumber FROM area WHERE AreaNumber = '"+areaNumber+"' ";
+                prepare = connect.prepareStatement(check);
+                result = prepare.executeQuery();
+                if(result.next()){
+                    alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Error Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Area #"+areaNumber+" already exists!");
+                    alert.showAndWait();
+                }else{
+                    prepare = connect.prepareStatement(sql);
+                    prepare.setString(1, areaNumber);
+                    prepare.setString(2, type);
+                    prepare.setString(3, status);
+                    prepare.setString(4, capacity);
+                    prepare.setString(5, price);
+
+                    prepare.executeUpdate();
+
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfully added");
+                    alert.showAndWait();
+
+                    facilitiesShowData();
+                    facilitiesClear();
+                }
+            }
+            
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+    }
+    
+    
+    
+    public void facilitiesUpdate(){
+        
+        String type1 = (String)area_type.getSelectionModel().getSelectedItem();
+        String status1 = (String)area_status.getSelectionModel().getSelectedItem();
+        String price1 = area_price.getText();
+        String areaNum1 = area_num.getText();
+        String capacity1 = area_capacity.getText();
+        String sql = "UPDATE `area` SET `Type`= '"+type1+"'  ,`Availability`= '"+status1+"',`Price`='"+price1+"', "
+                + " `AreaNumber`= '"+areaNum1+"', `Capacity`= '"+capacity1+"'  WHERE `AreaNumber`= '"+areaNum1+"' "; 
+        connect = ManageDatabase.connectDb();
+
+        try 
+        {
+            
+            Alert alert;
+            if(areaNum1== null || type1== null || status1== null || price1== null || capacity1== null){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select the data first");
+                alert.showAndWait();
+            
+            }else{
+                prepare = connect.prepareStatement(sql);
+                prepare.executeUpdate();
+                    
+                alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setTitle("Information Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Successfully updated!");
+                alert.showAndWait();
+                
+                facilitiesShowData();
+                facilitiesClear();
+            }
+                   
+        }catch(Exception e){e.printStackTrace();}
+    
+    }
+    
+    
+    
+    public void facilitiesDelete()
+    {    
+        String type1 = (String)area_type.getSelectionModel().getSelectedItem();
+        String status1 = (String)area_status.getSelectionModel().getSelectedItem();
+        String price1 = area_price.getText();
+        String capacity1 = area_capacity.getText();
+        String areaNum1 = area_num.getText();       
+        String deleteData = "DELETE FROM `area` WHERE `AreaNumber`= '"+areaNum1+"'   ";
+        connect = ManageDatabase.connectDb();
+
+        try 
+        {
+            Alert alert;
+            if(areaNum1 == null || type1 == null || status1 == null || price1 == null || capacity1 == null){
+                alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Please select the data first");
+                alert.showAndWait();
+            
+            }else{               
+                alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Confiramtion Message");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want to delete Area #" + areaNum1 + "?");
+                
+                Optional<ButtonType> option = alert.showAndWait();
+                if(option.get().equals(ButtonType.OK)){
+                    
+                    statement = connect.createStatement();
+                    statement.executeUpdate(deleteData);
+                    
+                    alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Information Message");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Successfuly deleted!");
+                    alert.showAndWait();
+
+                }else{
+                    return;
+                }
+                facilitiesShowData();
+                facilitiesClear();
+            }
+                   
+        }catch(Exception e){e.printStackTrace();}
+    }
+    
+    
+    
+    public void facilitiesClear(){       
+        area_num.setText("");
+        area_type.getSelectionModel().clearSelection();
+        area_status.getSelectionModel().clearSelection();           
+        area_capacity.setText("");               
+        area_price.setText("");               
+    }
+    
+  
+    
+    public void facilitiesType(){
+        List<String> listData = new ArrayList<>();    
+        for(String data: areaType){
+            listData.add(data);
+        }      
+        ObservableList list = FXCollections.observableArrayList(listData);
+        area_type.setItems(list);
+    }
+    
+    public void switchForm(MouseEvent event) throws IOException
+    {
+        Group button = (Group) event.getSource();     
+        switch(button.getId()) {
+          case "manage_rooms_btn":
+            manage_facilities.setVisible(false);
+            manage_rooms.setVisible(true);
+              break;
+          case "manage_facilities_btn":
+            manage_facilities.setVisible(true);
+            manage_rooms.setVisible(false);
+            break;
+        }        
+    }
+    
+ 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         availableRoomsRoomType();
         availableroomStatus();
-        availableRoomsShowData();    
+        availableRoomsShowData();  
+        roomsSearch();
+        facilitiesType();
+        facilitiesShowData();  
+        facilitiesSearch();
     }
 }
+
+
+
+
+

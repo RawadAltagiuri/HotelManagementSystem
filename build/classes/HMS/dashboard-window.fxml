@@ -10,59 +10,59 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="dashboard_form" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageDashboard">
+<AnchorPane id="AnchorPane" fx:id="dashboard_form" prefHeight="980.0" prefWidth="1500.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageDashboard">
    <children>
-      <StackPane layoutX="-118.0" layoutY="-93.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane layoutX="-118.0" layoutY="-93.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane>
+            <AnchorPane maxHeight="910.0" prefHeight="950.0">
                <children>
-                  <BorderPane layoutX="239.0" layoutY="61.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <BorderPane layoutX="239.0" layoutY="61.0" prefHeight="950.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <center>
-                        <AnchorPane prefHeight="970.0" prefWidth="1800.0" BorderPane.alignment="CENTER">
+                        <AnchorPane prefHeight="980.0" prefWidth="1500.0" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane fx:id="dashboard_btnForm" prefHeight="551.0" prefWidth="800.0" styleClass="main-anchor" stylesheets="@DashboardDesign.css">
+                              <AnchorPane fx:id="dashboard_btnForm" prefHeight="967.0" prefWidth="1702.0" styleClass="main-anchor" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="-57.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane layoutX="37.0" layoutY="27.0" prefHeight="143.0" prefWidth="774.0" styleClass="white-bg" stylesheets="@DashboardDesign.css">
+                                    <AnchorPane layoutX="37.0" layoutY="27.0" prefHeight="143.0" prefWidth="1619.0" style="-fx-background-color: #285956;" styleClass="white-bg" stylesheets="@DashboardDesign.css" translateY="35.0">
                                        <children>
                                           <AnchorPane layoutX="14.0" layoutY="6.0" prefHeight="127.0" prefWidth="235.0" styleClass="nav-form">
                                              <children>
-                                                <FontAwesomeIcon glyphName="CHECK" layoutX="23.0" layoutY="72.0" size="4em" />
-                                                <Label layoutX="71.0" layoutY="81.0" prefHeight="21.0" prefWidth="125.0" text="Today's book">
+                                                <FontAwesomeIcon fill="#e7e7e7" glyphName="CHECK" layoutX="23.0" layoutY="72.0" size="4em" translateX="58.0" AnchorPane.leftAnchor="20.0" />
+                                                <Label layoutX="47.0" layoutY="81.0" prefHeight="22.0" prefWidth="161.0" text="Today's bookings" textFill="#ebebeb" AnchorPane.bottomAnchor="20.0">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="dashboard_bookToday" layoutX="199.0" layoutY="42.0" prefHeight="26.0" prefWidth="10.0" text="0">
+                                                <Label fx:id="dashboard_bookToday" layoutX="186.0" layoutY="42.0" prefHeight="26.0" prefWidth="50.0" text="0" textFill="#ebebeb" translateX="58.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="3.0">
                                                    <font>
                                                       <Font name="Arial Bold" size="22.0" />
                                                    </font>
                                                 </Label>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="270.0" layoutY="6.0" prefHeight="127.0" prefWidth="235.0" styleClass="nav-form">
+                                          <AnchorPane layoutX="270.0" layoutY="6.0" prefHeight="127.0" prefWidth="235.0" styleClass="nav-form" translateX="-3.0" AnchorPane.leftAnchor="693.0">
                                              <children>
-                                                <FontAwesomeIcon glyphName="MONEY" layoutX="14.0" layoutY="72.0" size="4em" />
-                                                <Label layoutX="49.0" layoutY="79.0" prefHeight="21.0" prefWidth="137.0" text="Today's Income">
+                                                <FontAwesomeIcon fill="#e7e7e7" glyphName="MONEY" layoutX="21.0" layoutY="72.0" size="4em" translateX="36.0" translateY="-2.0" AnchorPane.leftAnchor="21.0" />
+                                                <Label layoutX="49.0" layoutY="91.0" prefHeight="21.0" prefWidth="137.0" text="Today's Income" textFill="#ebebeb" translateY="2.0" AnchorPane.bottomAnchor="20.0">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="dashboard_incomeToday" layoutX="187.0" layoutY="42.0" text="\$0.0">
+                                                <Label fx:id="dashboard_incomeToday" layoutX="95.0" layoutY="42.0" prefHeight="26.0" prefWidth="93.0" text="\$0.0" textFill="#ebebeb" translateX="36.0" AnchorPane.leftAnchor="95.0" AnchorPane.rightAnchor="-1.0">
                                                    <font>
                                                       <Font name="Arial Bold" size="22.0" />
                                                    </font>
                                                 </Label>
                                              </children>
                                           </AnchorPane>
-                                          <AnchorPane layoutX="525.0" layoutY="6.0" prefHeight="127.0" prefWidth="235.0" styleClass="nav-form">
+                                          <AnchorPane fx:id="Total_Income" layoutX="525.0" layoutY="6.0" prefHeight="127.0" prefWidth="263.0" styleClass="nav-form" AnchorPane.rightAnchor="0.0">
                                              <children>
-                                                <FontAwesomeIcon glyphName="DOLLAR" layoutX="14.0" layoutY="72.0" size="4em" />
-                                                <Label layoutX="55.0" layoutY="79.0" prefHeight="21.0" prefWidth="125.0" text="Total Income">
+                                                <FontAwesomeIcon fill="#e7e7e7" glyphName="DOLLAR" layoutX="10.0" layoutY="72.0" size="4em" translateX="51.0" translateY="-1.0" AnchorPane.leftAnchor="10.0" />
+                                                <Label layoutX="52.0" layoutY="86.0" prefHeight="21.0" prefWidth="125.0" text="Total Income" textFill="#ebebeb" AnchorPane.bottomAnchor="20.0">
                                                    <font>
                                                       <Font name="Arial Bold" size="18.0" />
                                                    </font>
                                                 </Label>
-                                                <Label fx:id="dashboard_totalIncome" layoutX="187.0" layoutY="42.0" text="\$0.0">
+                                                <Label fx:id="dashboard_totalIncome" layoutX="84.0" layoutY="41.0" prefHeight="26.0" prefWidth="141.0" text="\$0.0" textFill="#ebebeb" translateX="25.0" AnchorPane.leftAnchor="84.0" AnchorPane.rightAnchor="10.0">
                                                    <font>
                                                       <Font name="Arial Bold" size="22.0" />
                                                    </font>
@@ -71,7 +71,7 @@
                                           </AnchorPane>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="37.0" layoutY="181.0" prefHeight="369.0" prefWidth="774.0" styleClass="white-bg" stylesheets="@DashboardDesign.css">
+                                    <AnchorPane layoutX="37.0" layoutY="181.0" prefHeight="687.0" prefWidth="1616.0" styleClass="white-bg" stylesheets="@DashboardDesign.css" translateY="35.0">
                                        <children>
                                           <AreaChart fx:id="dashboard_areaChart" layoutX="24.0" layoutY="-72.0" prefHeight="369.0" prefWidth="774.0" title="Data Income" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <xAxis>

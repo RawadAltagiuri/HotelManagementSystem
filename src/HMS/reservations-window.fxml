@@ -1,13 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon?>
 <?import javafx.scene.Group?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
@@ -15,11 +12,11 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="reservations_form" prefHeight="860.0" prefWidth="1722.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageReservations">
+<AnchorPane id="AnchorPane" fx:id="reservations_form" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageReservations">
    <children>
       <StackPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane prefHeight="239.0" prefWidth="1722.0">
+            <AnchorPane>
                <children>
                   <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <center>
@@ -27,82 +24,117 @@
                            <children>
                               <AnchorPane fx:id="reservation_btnForm" styleClass="main-anchor" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                    <AnchorPane layoutX="23.0" prefHeight="854.0" prefWidth="1679.0" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                        <children>
                                           <Label layoutX="55.0" layoutY="78.0" prefHeight="20.0" prefWidth="97.0" style="-fx-text-alignment: center;" styleClass="subMenu-title" text="Reservations" textAlignment="CENTER" translateY="-13.0" />
-                                          <Group fx:id="manage_rooms_btn2" layoutX="2.0" layoutY="133.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="-7.0" translateY="-13.0">
+                                          <Group fx:id="room_reservarion_btn" layoutY="133.0" onMouseClicked="#switchForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateY="-13.0" AnchorPane.leftAnchor="0.0">
                                              <children>
-                                                <Rectangle fx:id="btn_rectangle121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
+                                                <Rectangle fx:id="btn_rectangle121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="220.0" />
                                                 <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Room Reservation" textFill="#21512a" />
                                              </children>
                                           </Group>
-                                          <Group fx:id="dashboard_btn1212" layoutX="-6.0" layoutY="176.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="1.0" translateY="-13.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="175.0">
+                                          <Group fx:id="event_reservarion_btn" layoutY="176.0" onMouseClicked="#switchForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateY="-13.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="175.0">
                                              <children>
-                                                <Rectangle fx:id="btn_rectangle12122" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
-                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Event Reservation" textFill="#21512a" />
-                                             </children>
-                                          </Group>
-                                          <Group fx:id="dashboard_btn12121" layoutX="-5.0" layoutY="219.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateY="-13.0" AnchorPane.bottomAnchor="659.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="218.0">
-                                             <children>
-                                                <Rectangle fx:id="btn_rectangle12121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
-                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="18.0" prefWidth="142.0" stylesheets="@DashboardDesign.css" text="Facilities Reservation" textFill="#21512a" />
-                                             </children>
-                                          </Group>
-                                          <Group fx:id="dashboard_btn121211" layoutX="-5.0" layoutY="262.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateY="-13.0" AnchorPane.bottomAnchor="616.0" AnchorPane.leftAnchor="1.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="261.0">
-                                             <children>
-                                                <Rectangle fx:id="btn_rectangle121211" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
-                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Bookings" textFill="#21512a" />
+                                                <Rectangle fx:id="btn_rectangle12122" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="220.0" />
+                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Facilities Reservation" textFill="#21512a" />
                                              </children>
                                           </Group>
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane fx:id="manage_rooms_btnForm2" styleClass="my-component" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="208.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                    <AnchorPane fx:id="reservations_form" layoutY="50.0" styleClass="my-component" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                        <children>
-                                          <TableView fx:id="availableRooms_tableView1" prefHeight="414.0" prefWidth="1355.0" style="-fx-font-size: 16px; -fx-border-color: grey; -fx-border-radius: 0px;" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="158.70000000000005" AnchorPane.topAnchor="510.30000000000007">
-                                             <columns>
-                                                <TableColumn fx:id="availableRooms_col_roomNumber1" prefWidth="140.0" text="Room#" />
-                                                <TableColumn fx:id="availableRooms_col_roomType1" prefWidth="140.0" text="Room Type" />
-                                                <TableColumn fx:id="availableRooms_col_status1" prefWidth="140.0" text="Status" />
-                                                <TableColumn fx:id="availableRooms_col_price1" prefWidth="140.0" text="Price($)" />
-                                             </columns>
-                                          </TableView>
-                                          <Label layoutX="90.0" layoutY="64.0" styleClass="subMenu-header" text="Room Reservation" AnchorPane.leftAnchor="90.0" />
-                                          <Label layoutX="90.0" layoutY="130.0" text="Guest's FirstName:" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="130.0" />
-                                          <Label layoutX="96.5" layoutY="257.0" text="Phone Number" AnchorPane.bottomAnchor="641.5" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="256.0" />
-                                          <Label layoutX="753.0" layoutY="258.0" text="Room Number:" AnchorPane.leftAnchor="748.0" AnchorPane.topAnchor="253.0" />
-                                          <TextField fx:id="firstName" layoutX="243.0" layoutY="126.0" prefHeight="30.0" prefWidth="316.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="242.0" />
-                                          <Label layoutX="91.5" layoutY="193.0" text="Guest's LastName:" AnchorPane.bottomAnchor="708.0" AnchorPane.leftAnchor="90.0" />
-                                          <TextField fx:id="lastName" layoutX="243.0" layoutY="186.0" prefHeight="30.0" prefWidth="312.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="703.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="953.0" />
-                                          <Label layoutX="749.0" layoutY="125.0" text="Booking Type:" />
-                                          <TextField layoutX="869.0" layoutY="121.0" prefHeight="28.0" prefWidth="311.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" text="Room Reservation" AnchorPane.leftAnchor="870.0" />
-                                          <TextField fx:id="phoneNumber" layoutX="244.0" layoutY="248.0" prefHeight="30.0" prefWidth="312.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="641.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="952.5" />
-                                          <ComboBox fx:id="roomNumber" layoutX="869.0" layoutY="250.0" prefHeight="25.0" prefWidth="94.0" AnchorPane.leftAnchor="870.0" AnchorPane.rightAnchor="549.0" />
-                                          <Label layoutX="749.0" layoutY="190.0" text="Room Type:" />
-                                          <ComboBox fx:id="roomType" layoutX="869.0" layoutY="188.0" prefHeight="25.0" prefWidth="312.0" AnchorPane.leftAnchor="870.0" />
-                                          <Label layoutX="158.0" layoutY="315.0" text="Email Address:" AnchorPane.leftAnchor="90.0" AnchorPane.topAnchor="320.0" />
-                                          <TextField fx:id="emailAddress" layoutX="244.5" layoutY="309.0" prefHeight="30.0" prefWidth="312.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="578.0" AnchorPane.leftAnchor="242.0" AnchorPane.rightAnchor="952.0" />
-                                          <FontAwesomeIcon fill="#30392c" glyphName="PLUS" layoutX="576.0" layoutY="335.0" AnchorPane.bottomAnchor="584.1000003814697">
+                                          <Label layoutX="100.0" layoutY="64.0" styleClass="subMenu-header" text="Room Reservation" />
+                                          <Label layoutX="981.0" layoutY="60.0" text="Customer #:" />
+                                          <TextField fx:id="customerNumber1" layoutX="1086.0" layoutY="60.0" prefHeight="30.0" prefWidth="120.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
+                                          <Label layoutX="750.0" layoutY="150.0" text="Booking Type:" />
+                                          <TextField layoutX="910.0" layoutY="150.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" text="Room Reservation" />
+                                          <Label layoutX="100.0" layoutY="200.0" text="Guest's FirstName:" translateY="40.0" />
+                                          <TextField fx:id="firstName" layoutX="260.0" layoutY="200.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="200.0" text="Guest's LastName:" translateY="40.0" />
+                                          <TextField fx:id="lastName" layoutX="910.0" layoutY="200.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="300.0" text="Phone Number" translateY="40.0" />
+                                          <TextField fx:id="emailAddress" layoutX="260.0" layoutY="300.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="100.0" layoutY="300.0" text="Email Address:" translateY="40.0" />
+                                          <TextField fx:id="phoneNumber" layoutX="910.0" layoutY="300.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="100.0" layoutY="400.0" text="Room Type:" translateY="40.0" />
+                                          <ComboBox fx:id="room_type" layoutX="260.0" layoutY="400.0" onAction="#roomNumberList" prefHeight="30.0" prefWidth="310.0" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="400.0" text="Room Number:" translateY="40.0" />
+                                          <ComboBox fx:id="roomNumber" layoutX="910.0" layoutY="400.0" prefHeight="30.0" prefWidth="310.0" translateY="40.0" />
+                                          <Label layoutX="100.0" layoutY="500.0" text="Check In:" translateY="40.0" />
+                                          <DatePicker fx:id="checkIn_date" layoutX="260.0" layoutY="500.0" prefHeight="30.0" prefWidth="310.0" promptText="MM-DD-YYYY" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="500.0" text="Check Out:" translateY="40.0" />
+                                          <DatePicker fx:id="checkOut_date" layoutX="910.0" layoutY="500.0" onAction="#totalDays" prefHeight="30.0" prefWidth="310.0" promptText="MM-DD-YYYY" translateY="40.0" />
+                                          <Label layoutX="200.0" layoutY="706.0" text="Total Days">
                                              <font>
-                                                <Font size="17.0" />
+                                                <Font name="System Bold" size="16.0" />
                                              </font>
-                                          </FontAwesomeIcon>
-                                          <Label layoutX="750.0" layoutY="318.0" text="Adults:" AnchorPane.bottomAnchor="586.0" AnchorPane.leftAnchor="750.0" />
-                                          <Label layoutX="1013.0" layoutY="315.0" text="Kids:" AnchorPane.bottomAnchor="587.0" />
-                                          <ComboBox layoutX="869.0" layoutY="311.0" prefHeight="25.0" prefWidth="94.0" AnchorPane.bottomAnchor="584.0" AnchorPane.leftAnchor="870.0" />
-                                          <ComboBox layoutX="1088.0" layoutY="310.5" prefHeight="25.0" prefWidth="94.0" AnchorPane.bottomAnchor="584.5" />
-                                          <DatePicker fx:id="checkIn_date" layoutX="243.0" layoutY="389.0" prefHeight="26.0" prefWidth="312.0" promptText="MM-DD-YYYY" AnchorPane.bottomAnchor="500.0" AnchorPane.leftAnchor="242.0" AnchorPane.topAnchor="398.5" />
-                                          <Label layoutX="90.5" layoutY="406.5" text="Check In:" AnchorPane.bottomAnchor="501.5" AnchorPane.leftAnchor="90.5" />
-                                          <DatePicker fx:id="checkOut_date" layoutX="243.0" layoutY="447.0" prefHeight="26.0" prefWidth="312.0" promptText="MM-DD-YYYY" AnchorPane.bottomAnchor="455.0" AnchorPane.leftAnchor="242.0" />
-                                          <Label layoutX="92.0" layoutY="451.0" text="Check Out:" AnchorPane.bottomAnchor="460.0" AnchorPane.leftAnchor="90.0" />
-                                          <Button layoutX="1386.0" layoutY="865.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="99.0" styleClass="reservation-btn3" stylesheets="@DashboardDesign.css" text="Check-In" textFill="WHITE" />
-                                          <Button layoutX="1385.0" layoutY="791.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="99.0" styleClass="reservation-btn2" stylesheets="@DashboardDesign.css" text="Receipt" />
-                                          <Button layoutX="1383.0" layoutY="718.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="99.0" styleClass="reservation-btn1" stylesheets="@DashboardDesign.css" text="Reset" AnchorPane.bottomAnchor="176.30000000000004" AnchorPane.leftAnchor="1382.5" AnchorPane.rightAnchor="32.20000000000009" AnchorPane.topAnchor="718.0" />
-                                          <Label layoutX="1007.0" layoutY="23.0" text="Customer #:" />
-                                          <TextField fx:id="customerNumber" layoutX="1108.0" layoutY="18.0" prefHeight="28.0" prefWidth="118.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
-                                          <Label layoutX="755.0" layoutY="440.0" text="Total:" />
-                                          <Label fx:id="total" layoutX="815.0" layoutY="440.0" text="0.0$" />
-                                          <Label layoutX="754.0" layoutY="417.0" text="Total Days" />
-                                          <Label fx:id="totalDays" layoutX="837.0" layoutY="417.0" text="-----" />
+                                          </Label>
+                                          <Label fx:id="totalDays" layoutX="310.0" layoutY="707.0" text="days">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="200.0" layoutY="761.0" text="Total:">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="total" layoutX="310.0" layoutY="763.0" text="0.0$">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="reset_btn" layoutX="460.0" layoutY="730.0" mnemonicParsing="false" onAction="#reset" prefHeight="30.0" prefWidth="150.0" styleClass="reservation-btn1" stylesheets="@DashboardDesign.css" text="Reset" />
+                                          <Button fx:id="receipt_btn" layoutX="660.0" layoutY="730.0" mnemonicParsing="false" onAction="#receipt" prefHeight="30.0" prefWidth="150.0" styleClass="reservation-btn2" stylesheets="@DashboardDesign.css" text="Receipt" />
+                                          <Button fx:id="checkin_btn" layoutX="860.0" layoutY="730.0" mnemonicParsing="false" onAction="#customerCheckIn" prefHeight="30.0" prefWidth="150.0" styleClass="reservation-btn3" stylesheets="@DashboardDesign.css" text="Check-In" textFill="WHITE" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="event_reservations_form" layoutY="50.0" styleClass="my-component" stylesheets="@DashboardDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                       <children>
+                                          <Label layoutX="100.0" layoutY="64.0" styleClass="subMenu-header" text="Facilities Reservation" />
+                                          <Label layoutX="981.0" layoutY="60.0" text="Customer #:" />
+                                          <TextField fx:id="customerNumber" layoutX="1086.0" layoutY="60.0" prefHeight="30.0" prefWidth="120.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" />
+                                          <Label layoutX="750.0" layoutY="150.0" text="Booking Type:" />
+                                          <TextField layoutX="910.0" layoutY="150.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" text="Facilities Reservation" />
+                                          <Label layoutX="100.0" layoutY="200.0" text="Guest's FirstName:" translateY="40.0" />
+                                          <TextField fx:id="firstName1" layoutX="260.0" layoutY="200.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="200.0" text="Guest's LastName:" translateY="40.0" />
+                                          <TextField fx:id="lastName1" layoutX="910.0" layoutY="200.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="300.0" text="Phone Number" translateY="40.0" />
+                                          <TextField fx:id="emailAddress1" layoutX="260.0" layoutY="300.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="100.0" layoutY="300.0" text="Email Address:" translateY="40.0" />
+                                          <TextField fx:id="phoneNumber1" layoutX="910.0" layoutY="300.0" prefHeight="30.0" prefWidth="310.0" styleClass="reservation-textArea" stylesheets="@DashboardDesign.css" translateY="40.0" />
+                                          <Label layoutX="100.0" layoutY="400.0" text="Area Type:" translateY="40.0" />
+                                          <ComboBox fx:id="area_type" layoutX="260.0" layoutY="400.0" onAction="#FacilityNumberList" prefHeight="30.0" prefWidth="310.0" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="400.0" text="Area Number:" translateY="40.0" />
+                                          <ComboBox fx:id="area_number" layoutX="910.0" layoutY="400.0" prefHeight="30.0" prefWidth="310.0" translateY="40.0" />
+                                          <Label layoutX="100.0" layoutY="500.0" text="Check In:" translateY="40.0" />
+                                          <DatePicker fx:id="checkIn_date1" layoutX="260.0" layoutY="500.0" prefHeight="30.0" prefWidth="310.0" promptText="MM-DD-YYYY" translateY="40.0" />
+                                          <Label layoutX="750.0" layoutY="500.0" text="Check Out:" translateY="40.0" />
+                                          <DatePicker fx:id="checkOut_date1" layoutX="910.0" layoutY="500.0" onAction="#totalDays1" prefHeight="30.0" prefWidth="310.0" promptText="MM-DD-YYYY" translateY="40.0" />
+                                          <Label layoutX="200.0" layoutY="706.0" text="Total Days">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="totalDays1" layoutX="310.0" layoutY="707.0" text="days">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="200.0" layoutY="761.0" text="Total:">
+                                             <font>
+                                                <Font name="System Bold" size="16.0" />
+                                             </font>
+                                          </Label>
+                                          <Label fx:id="total1" layoutX="310.0" layoutY="763.0" text="0.0$">
+                                             <font>
+                                                <Font size="15.0" />
+                                             </font>
+                                          </Label>
+                                          <Button fx:id="reset_btn1" layoutX="460.0" layoutY="730.0" mnemonicParsing="false" onAction="#reset1" prefHeight="30.0" prefWidth="150.0" styleClass="reservation-btn1" stylesheets="@DashboardDesign.css" text="Reset" />
+                                          <Button fx:id="receipt_btn1" layoutX="660.0" layoutY="730.0" mnemonicParsing="false" onAction="#receipt" prefHeight="30.0" prefWidth="150.0" styleClass="reservation-btn2" stylesheets="@DashboardDesign.css" text="Receipt" />
+                                          <Button fx:id="checkin_btn1" layoutX="860.0" layoutY="730.0" mnemonicParsing="false" onAction="#customerCheckIn1" prefHeight="30.0" prefWidth="150.0" styleClass="reservation-btn3" stylesheets="@DashboardDesign.css" text="Check-In" textFill="WHITE" />
                                        </children>
                                     </AnchorPane>
                                  </children>

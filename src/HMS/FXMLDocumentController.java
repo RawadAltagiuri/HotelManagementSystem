@@ -5,6 +5,7 @@
  */
 package HMS;
 
+import static com.ibm.icu.impl.PluralRulesLoader.loader;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -24,12 +25,15 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -39,6 +43,12 @@ import javafx.stage.StageStyle;
  * @author youse
  */
 public class FXMLDocumentController implements Initializable {
+        
+    @FXML
+    private Text hotel_name;
+    
+    @FXML
+    private Text hotel_name1;
     
     @FXML
     private AnchorPane stack_form;
@@ -81,7 +91,8 @@ public class FXMLDocumentController implements Initializable {
     private Group logout_btn;
     @FXML
     private Group settings_btn;
-    
+    @FXML
+    private Label profileUsername;    
     
     @FXML
     private AnchorPane lastVisibleForm;
@@ -116,6 +127,8 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private ManageDashboard manageDashboard;
     @FXML
+    private ManageGuests manageGuests;
+    @FXML
     private ManageHotelConfig manageHotelConfig;
     @FXML
     private ManageApplication manageApplication;
@@ -131,8 +144,58 @@ public class FXMLDocumentController implements Initializable {
     private static String globalbuser;
     private static String globalpassword;
 
+    
+    public void setHotelName() {
+        String sql = "SELECT `hotel_name` FROM `hotelsettings` WHERE 1";
+        String hotelName = "";
 
-     public void login() {
+        try (Connection connection = ManageDatabase.connectDb();
+             PreparedStatement prepare2 = connection.prepareStatement(sql);
+             ResultSet result = prepare2.executeQuery()) {
+
+            if (result.next()) {
+                hotelName = result.getString("hotel_name");
+                if (hotel_name != null) {
+                    hotel_name.setText(hotelName);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    public void setHotelName1() {
+        String sql = "SELECT `hotel_name` FROM `hotelsettings` WHERE 1";
+        String hotelName = "";
+
+        try (Connection connection = ManageDatabase.connectDb();
+             PreparedStatement prepare2 = connection.prepareStatement(sql);
+             ResultSet result = prepare2.executeQuery()) {
+
+            if (result.next()) {
+                hotelName = result.getString("hotel_name");
+                if (hotel_name1 != null) {
+                    hotel_name1.setText(hotelName);
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    
+    
+    public void checkPressedKey(){
+        stack_form.setOnKeyPressed(event -> {
+            if (event.getCode() == KeyCode.ENTER) {
+                login();
+            }
+        });
+    }
+
+
+    public void login() {
         String user = username.getText();
         globalbuser = user;
         String pass = password.getText();
@@ -140,13 +203,12 @@ public class FXMLDocumentController implements Initializable {
         String sql = "SELECT * FROM user WHERE username = ? and password = ?";
 
         connect = ManageDatabase.connectDb();
-
+        
         try {
 
             prepare = connect.prepareStatement(sql);
             prepare.setString(1, user);
             prepare.setString(2, pass);
-
             result = prepare.executeQuery();
 
             Alert alert;
@@ -167,12 +229,12 @@ public class FXMLDocumentController implements Initializable {
                     alert.setHeaderText(null);
                     alert.setContentText("Successfully Logged in!");
                     alert.showAndWait();
-                    
                     //hide login page after login
                     loginBtn.getScene().getWindow().hide();
-
+                    GetReservationData.username = username.getText();
                     Parent root = FXMLLoader.load(getClass().getResource("main-window.fxml"));
-
+                    
+        
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
                     
@@ -204,7 +266,6 @@ public class FXMLDocumentController implements Initializable {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
     
     public void logout(){
@@ -255,7 +316,6 @@ public class FXMLDocumentController implements Initializable {
     
     public void switchForm(MouseEvent event) throws IOException
     {
-  
         Group button = (Group) event.getSource();     
         switch(button.getId()) {
           case "dashboard_btn":
@@ -304,14 +364,18 @@ public class FXMLDocumentController implements Initializable {
               }
               else{
                 Alert alert;
-                alert = new Alert(AlertType.CONFIRMATION);
+                alert = new Alert(AlertType.ERROR);
                 alert.setHeaderText(null);
-                alert.setContentText("Only accessible by managers");
+                alert.setContentText("User does not have authority for this action");
                 alert.showAndWait();
               }
               break;
         }      
    
+    }
+    
+    public void ChangeDisplayName(){
+        profileUsername.setText(GetUsersData.getFullName(globalbuser));
     }
     public static String getglobaluser() {
         return globalbuser;
@@ -322,17 +386,14 @@ public class FXMLDocumentController implements Initializable {
     }
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        
-//        try {
-//            FXMLLoader dashboardLoader = new FXMLLoader(getClass().getResource("dashboard-window.fxml"));
-//            Pane dashboardPane  = dashboardLoader.load();
-//            mainBorderPane.setCenter(dashboardPane);
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+    public void initialize(URL url, ResourceBundle rb) { 
+        setHotelName();
+        setHotelName1();
+        FXMLLoader dashboardLoader = new FXMLLoader(getClass().getResource("dashboard-window.fxml"));
+        try{
+            Pane dashboardPane = dashboardLoader.load();
+            mainBorderPane.setCenter(dashboardPane);
+        }catch(Exception e){e.printStackTrace();}   
     }
-
- 
-
 }
+

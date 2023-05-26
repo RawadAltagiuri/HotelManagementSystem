@@ -1,16 +1,34 @@
 package HMS;
 
+import HMS.GetUsersData.User;
+import static HMS.GetUsersData.fetchUsersFromDatabase;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+import javafx.collections.ObservableList;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
+
 
 public class ManageSettings {
 
@@ -19,12 +37,18 @@ public class ManageSettings {
 
     @FXML
     private TextField ConfirmPasswordField;
-    
+
     @FXML
     private Label ConfirmationWarning;
-    
+
     @FXML
     private Label ConfirmationWarning1;
+    
+    @FXML
+    private ComboBox<?> CreateNewUserComboBox;
+
+    @FXML
+    private TextField CreateNewUserConfirm;
 
     @FXML
     private AnchorPane CreateNewUserForm;
@@ -34,12 +58,6 @@ public class ManageSettings {
 
     @FXML
     private TextField CreateNewUserNamefield;
-
-    @FXML
-    private TextField CreateNewUserOccupationfield;
-
-    @FXML
-    private TextField CreateNewUserConfirm;
 
     @FXML
     private TextField CreateNewUserPasswordField;
@@ -55,9 +73,6 @@ public class ManageSettings {
 
     @FXML
     private TextField DesiredUsername;
-
-    @FXML
-    private Label Edit;
 
     @FXML
     private Label Edit1;
@@ -93,7 +108,7 @@ public class ManageSettings {
     private TextField PasswordFieldChange;
 
     @FXML
-    private Group ProgramSettingsFormButton;
+    private Button Refresh;
 
     @FXML
     private AnchorPane Setting_form;
@@ -129,10 +144,10 @@ public class ManageSettings {
     private Button UpdateUser;
 
     @FXML
-    private Label WarningMessageUsername;
+    private TableView<User> UsersTable;
 
     @FXML
-    private Rectangle btn_rectangle12;
+    private Label WarningMessageUsername;
 
     @FXML
     private Rectangle btn_rectangle121;
@@ -147,13 +162,28 @@ public class ManageSettings {
     private TextField firstnamefield;
 
     @FXML
+    private TableColumn<User, String> idcolumn;
+
+    @FXML
+    private TableColumn<User, String> namecolumn;
+
+    @FXML
     private AnchorPane settings_btnForm32;
+
+    @FXML
+    private TableColumn<User, String> surnamecolumn;
 
     @FXML
     private TextField surnamefield;
 
     @FXML
+    private TableColumn<User, String> usernamecolumn;
+
+    @FXML
     private TextField usernamefield;
+    
+    private ObservableList<User> UserList;
+    private String titles[] = {"Manager", "Receptionist"};
 
     @FXML
     void AddUser(ActionEvent event) {
@@ -161,16 +191,16 @@ public class ManageSettings {
         String password = CreateNewUserPasswordField.getText();
         String surname = CreateNewUserSurnamefield.getText();
         String firstname = CreateNewUserNamefield.getText();
-        String occupation = CreateNewUserOccupationfield.getText();
+        String occupation = (String) CreateNewUserComboBox.getSelectionModel().getSelectedItem();;
       
         if(FXMLDocumentController.getglobalpassword().equals(CreateNewUserConfirm.getText())){
             ConfirmationWarning.setVisible(false);
-            GetUsersData.AddUser(username, password, surname, firstname, occupation);
+            GetUsersData.AddUser(username, password, firstname, surname, occupation);
             CreateNewUsernameField.setText("");
             CreateNewUserPasswordField.setText("");
             CreateNewUserSurnamefield.setText("");
             CreateNewUserNamefield.setText("");
-            CreateNewUserOccupationfield.setText("");
+            CreateNewUserComboBox.getSelectionModel().clearSelection();  ;
         }else{
             ConfirmationWarning.setVisible(true);
         }
@@ -203,7 +233,42 @@ public class ManageSettings {
             WarningMessageUsername.setVisible(true);
         }
     }
+    
+    @FXML
+    void FillTextWithUserDataTABLE(MouseEvent event) {
+        User tableuser = UsersTable.getSelectionModel().getSelectedItem();
+        if (tableuser != null) {
+            WarningMessageUsername.setVisible(false);
+            DesiredUsername.setText(tableuser.getUsername());
+            IdNumberField.setText(Integer.toString(tableuser.getId()));
+            usernamefield.setText(tableuser.getUsername());
+            PasswordFieldChange.setText(tableuser.getPassword());
+            firstnamefield.setText(tableuser.getName());
+            surnamefield.setText(tableuser.getSurname());
+            OccupationField.setText(tableuser.getOccupation());
+        }else{
+            WarningMessageUsername.setVisible(true);
+        }
+    }
+    
+    @FXML
+    public void FillUserTable(){
+        UserList = fetchUsersFromDatabase(); //function that retrieves and returns a list of available rooms from a database as an ObservableList of GetRoomData objects.
+        System.out.println();
+        if (UserList != null) {
+            System.out.println("Hello");
 
+            namecolumn.setCellValueFactory(new PropertyValueFactory<>("name"));
+            usernamecolumn.setCellValueFactory(new PropertyValueFactory<>("username"));
+            surnamecolumn.setCellValueFactory(new PropertyValueFactory<>("surname"));
+            idcolumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            UsersTable.setItems(UserList);
+        }
+        else{
+        }
+    }
+    
+    
     @FXML
     void UpdateUser(ActionEvent event) {
         String username = usernamefield.getText();
@@ -230,18 +295,32 @@ public class ManageSettings {
 
     @FXML
     void deleteUser(ActionEvent event) {
-        GetUsersData.deleteUser(DesiredUsername.getText());
-        usernamefield.setText("");
-        PasswordFieldChange.setText("");
-        surnamefield.setText("");
-        firstnamefield.setText("");
-        OccupationField.setText("");
-        IdNumberField.setText("");
+        if(FXMLDocumentController.getglobalpassword().equals(ConfirmPasswordField.getText())){
+            GetUsersData.deleteUser(DesiredUsername.getText());
+            usernamefield.setText("");
+            PasswordFieldChange.setText("");
+            surnamefield.setText("");
+            firstnamefield.setText("");
+            OccupationField.setText("");
+            IdNumberField.setText("");
+            FillUserTable();
+        }else{
+            ConfirmationWarning1.setVisible((true));
+        }
     }
 
     @FXML
     void func(MouseEvent event) {
 
+    }
+    
+    public void employeeTitles(){ //function populates the "room type" ComboBox with the available room types from the "type" list.
+        List<String> listData = new ArrayList<>();    
+        for(String data: titles){
+            listData.add(data);
+        }      
+        ObservableList list = FXCollections.observableArrayList(listData);
+        CreateNewUserComboBox.setItems(list);
     }
 
 }

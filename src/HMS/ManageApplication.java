@@ -1,10 +1,19 @@
 package HMS;
 
+import static com.ibm.icu.impl.PluralRulesLoader.loader;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -17,8 +26,10 @@ public class ManageApplication extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
+     
         Parent root = FXMLLoader.load(getClass().getResource("login-window.fxml")); //this code opens the fxaml design decided, so this will load login fxml file
 
+        
         Scene scene = new Scene(root);
 
         // set up the drag functionality
@@ -44,8 +55,6 @@ public class ManageApplication extends Application {
         stage.setY(0);
         stage.setWidth(Screen.getPrimary().getVisualBounds().getWidth());
         stage.setHeight(Screen.getPrimary().getVisualBounds().getHeight());         //setting bounds and screen ration 
-        System.out.println(Screen.getPrimary().getVisualBounds().getWidth());
-        System.out.println(Screen.getPrimary().getVisualBounds().getHeight());
         stage.show();
     }
 

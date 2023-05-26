@@ -14,21 +14,38 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="hotelConfig_form" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageHotelConfig">
+<AnchorPane id="AnchorPane" fx:id="hotelConfig_form" prefHeight="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="HMS.ManageHotelConfig">
    <children>
-      <StackPane layoutX="-118.0" layoutY="-93.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane layoutX="-118.0" layoutY="-93.0" prefHeight="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane>
+            <AnchorPane prefHeight="900.0">
                <children>
-                  <BorderPane layoutX="239.0" layoutY="61.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <BorderPane layoutX="239.0" layoutY="61.0" prefHeight="900.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <center>
-                        <AnchorPane prefHeight="970.0" prefWidth="1828.0" BorderPane.alignment="CENTER">
+                        <AnchorPane BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane fx:id="hotel_configForm" layoutX="156.0" layoutY="79.0" prefHeight="956.0" prefWidth="1720.0" style="-fx-background-color: #F0EFEF;" AnchorPane.bottomAnchor="-3.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <AnchorPane fx:id="hotel_configForm" style="-fx-background-color: #F0EFEF;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <AnchorPane fx:id="manage_rooms_btnForm" layoutX="213.0" layoutY="13.0" prefHeight="910.0" prefWidth="1508.0" styleClass="my-component" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                    <AnchorPane stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                        <children>
-                                          <TableView fx:id="availableRooms_tableView" layoutX="470.0" layoutY="122.0" onMouseClicked="#avaialbleRoomsSelectData" prefHeight="734.0" prefWidth="960.0" style="-fx-font-size: 16px; -fx-border-color: grey; -fx-border-radius: 0px;" stylesheets="@DashboardDesign.css">
+                                          <Label layoutX="37.0" layoutY="78.0" prefHeight="20.0" prefWidth="152.0" styleClass="subMenu-title" text="Hotel Configuration" textAlignment="CENTER" translateY="-13.0" />
+                                          <Group fx:id="manage_rooms_btn" layoutX="2.0" layoutY="133.0" onMouseClicked="#switchForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateY="-13.0" AnchorPane.leftAnchor="0.0">
+                                             <children>
+                                                <Rectangle fx:id="btn_rectangle12" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" translateY="-13.0" width="212.0" />
+                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Manage Rooms" textFill="#21512a" translateY="-13.0" />
+                                             </children>
+                                          </Group>
+                                          <Group fx:id="manage_facilities_btn" layoutX="12.0" layoutY="143.0" onMouseClicked="#switchForm" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateY="-13.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="175.0">
+                                             <children>
+                                                <Rectangle fx:id="btn_rectangle121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
+                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Manage Facilities" textFill="#21512a" />
+                                             </children>
+                                          </Group>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane fx:id="manage_rooms" styleClass="my-component" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                       <children>
+                                          <TableView fx:id="availableRooms_tableView" layoutX="470.0" layoutY="122.0" onMouseClicked="#avaialbleRoomsSelectData" prefHeight="600.0" prefWidth="1027.0" style="-fx-font-size: 16px; -fx-border-color: grey; -fx-border-radius: 0px;" stylesheets="@DashboardDesign.css" translateX="-55.0" translateY="71.0">
                                             <columns>
                                               <TableColumn fx:id="availableRooms_col_roomNumber" prefWidth="140.0" text="Room#" />
                                               <TableColumn fx:id="availableRooms_col_roomType" prefWidth="140.0" text="Room Type" />
@@ -36,8 +53,8 @@
                                                 <TableColumn fx:id="availableRooms_col_price" prefWidth="140.0" text="Price($)" />
                                             </columns>
                                           </TableView>
-                                          <TextField fx:id="availabelRooms_search" layoutX="469.5" layoutY="79.0" prefHeight="25.0" prefWidth="283.0" promptText="Search" styleClass="search" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="469.5" />
-                                          <FontAwesomeIcon fill="#7ea875" glyphName="SEARCH" layoutX="482.0" layoutY="98.0" size="1.2em" />
+                                          <TextField fx:id="availableRooms_search" layoutX="469.5" layoutY="79.0" prefHeight="25.0" prefWidth="283.0" promptText="Search" styleClass="search" stylesheets="@DashboardDesign.css" translateX="-50.0" translateY="62.0" AnchorPane.leftAnchor="469.5" />
+                                          <FontAwesomeIcon fill="#7ea875" glyphName="SEARCH" layoutX="482.0" layoutY="98.0" size="1.2em" translateX="-50.0" translateY="62.0" />
                                           <AnchorPane layoutX="87.0" layoutY="138.5" prefHeight="528.0" prefWidth="374.0" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="269.5" AnchorPane.topAnchor="138.5">
                                              <children>
                                                 <TextField fx:id="availableRooms_roomNumber" layoutX="73.0" layoutY="105.0" prefHeight="25.0" prefWidth="143.0" styleClass="textfield" stylesheets="@DashboardDesign.css" />
@@ -73,22 +90,60 @@
                                           <Label layoutX="90.0" layoutY="64.0" styleClass="subMenu-header" text="Manage Rooms" />
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="-1.0" prefHeight="923.0" prefWidth="214.0" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="50.0">
+                                    <AnchorPane fx:id="manage_facilities" styleClass="my-component" stylesheets="@DashboardDesign.css" visible="false" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
                                        <children>
-                                          <Label layoutX="37.0" layoutY="78.0" prefHeight="20.0" prefWidth="152.0" styleClass="subMenu-title" text="Hotel Configuration" textAlignment="CENTER" translateY="-13.0" />
-                                          <Group fx:id="manage_rooms_btn" layoutX="2.0" layoutY="133.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="-7.0" translateY="-13.0">
+                                          <TableView fx:id="area_tableView" layoutX="470.0" layoutY="122.0" onMouseClicked="#facilitiesSelectData" prefHeight="600.0" prefWidth="960.0" style="-fx-font-size: 16px; -fx-border-color: grey; -fx-border-radius: 0px;" stylesheets="@DashboardDesign.css" translateX="-55.0" translateY="71.0">
+                                             <columns>
+                                                <TableColumn fx:id="areas_col_num" prefWidth="140.0" text="Area#" />
+                                                <TableColumn fx:id="areas_col_type" prefWidth="140.0" text="AreaType" />
+                                                <TableColumn fx:id="areas_col_capacity" prefWidth="140.0" text="Capacity" />
+                                                <TableColumn fx:id="areas_col_status" prefWidth="140.0" text="Status" />
+                                                <TableColumn fx:id="areas_col_price" prefWidth="140.0" text="1 day price" />
+                                             </columns>
+                                          </TableView>
+                                          <TextField fx:id="facilities_search" layoutX="469.5" layoutY="79.0" onMouseClicked="#facilitiesSearch" prefHeight="25.0" prefWidth="283.0" promptText="Search" styleClass="search" stylesheets="@DashboardDesign.css" translateX="-50.0" translateY="62.0" AnchorPane.leftAnchor="469.5" />
+                                          <FontAwesomeIcon fill="#7ea875" glyphName="SEARCH" layoutX="482.0" layoutY="98.0" size="1.2em" translateX="-50.0" translateY="62.0" />
+                                          <AnchorPane layoutX="87.0" layoutY="138.5" prefHeight="528.0" prefWidth="374.0" stylesheets="@DashboardDesign.css" AnchorPane.bottomAnchor="269.5" AnchorPane.topAnchor="138.5">
                                              <children>
-                                                <Rectangle fx:id="btn_rectangle12" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" translateY="-13.0" width="212.0" />
-                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Manage Rooms" textFill="#21512a" translateY="-13.0" />
+                                                <TextField fx:id="area_num" layoutX="73.0" layoutY="105.0" prefHeight="25.0" prefWidth="143.0" styleClass="textfield" stylesheets="@DashboardDesign.css" />
+                                                <Label layoutX="5.0" layoutY="111.0" prefHeight="17.0" prefWidth="52.0" text="Area#:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label layoutX="5.0" layoutY="148.0" prefHeight="17.0" prefWidth="68.0" text="AreaType:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <ComboBox fx:id="area_type" layoutX="73.0" layoutY="144.0" onAction="#availableRoomsRoomType" prefHeight="25.0" prefWidth="143.0" promptText="Choose" styleClass="combo-box" stylesheets="@DashboardDesign.css" />
+                                                <ComboBox fx:id="area_status" layoutX="73.0" layoutY="229.0" onAction="#availableroomStatus" prefHeight="25.0" prefWidth="143.0" promptText="Choose" styleClass="combo-box" stylesheets="@DashboardDesign.css" />
+                                                <TextField fx:id="area_price" layoutX="73.0" layoutY="261.0" prefHeight="25.0" prefWidth="143.0" styleClass="textfield" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="73.0" />
+                                                <Label layoutX="6.0" layoutY="271.0" prefHeight="17.0" prefWidth="52.0" text="Price:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="area_add_btn" layoutX="21.0" layoutY="317.0" mnemonicParsing="false" onAction="#facilitiesAdd" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Add" />
+                                                <Button fx:id="area_update_btn" layoutX="129.0" layoutY="317.0" mnemonicParsing="false" onAction="#facilitiesUpdate" onMouseClicked="#facilitiesUpdate" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Update" />
+                                                <Label layoutX="5.0" layoutY="231.0" prefHeight="17.0" prefWidth="68.0" text="Status:">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
+                                                <Button fx:id="area_clear_btn" layoutX="21.0" layoutY="362.0" mnemonicParsing="false" onAction="#facilitiesClear" onMouseClicked="#facilitiesClear" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Clear" />
+                                                <Button fx:id="area_delete_btn" layoutX="129.0" layoutY="361.0" mnemonicParsing="false" onAction="#facilitiesDelete" onMouseClicked="#facilitiesDelete" prefWidth="70.0" styleClass="add-btn" stylesheets="@DashboardDesign.css" text="Delete" />
+                                                <TextField fx:id="area_capacity" layoutX="73.0" layoutY="182.0" prefHeight="25.0" prefWidth="143.0" styleClass="textfield" stylesheets="@DashboardDesign.css" AnchorPane.leftAnchor="73.0" />
+                                                <Label layoutX="5.0" layoutY="189.0" prefHeight="17.0" prefWidth="52.0" text="Capacity" AnchorPane.leftAnchor="5.0">
+                                                   <font>
+                                                      <Font name="Arial" size="12.0" />
+                                                   </font>
+                                                </Label>
                                              </children>
-                                          </Group>
-                                          <Group fx:id="dashboard_btn121" layoutX="12.0" layoutY="143.0" styleClass="subMenu-btns" stylesheets="@DashboardDesign.css" translateX="1.0" translateY="-13.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="175.0">
-                                             <children>
-                                                <Rectangle fx:id="btn_rectangle121" arcHeight="5.0" arcWidth="5.0" fill="#ffffff00" height="43.0" layoutX="6.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" styleClass="subMenu-btns" width="212.0" />
-                                                <Label layoutX="60.0" layoutY="12.0" mouseTransparent="true" prefHeight="17.0" prefWidth="117.0" stylesheets="@DashboardDesign.css" text="Manage Facilities" textFill="#21512a" />
-                                             </children>
-                                          </Group>
-                                       </children></AnchorPane>
+                                          </AnchorPane>
+                                          <Label layoutX="90.0" layoutY="64.0" styleClass="subMenu-header" text="Manage Facilities" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </AnchorPane>
                            </children>
