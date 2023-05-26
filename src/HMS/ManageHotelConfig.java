@@ -374,6 +374,15 @@ public class ManageHotelConfig implements Initializable {
             String type = (String)availableRooms_roomType.getSelectionModel().getSelectedItem();
             String status = (String)availableRooms_status.getSelectionModel().getSelectedItem();
             String price = availableRooms_price.getText();
+            if(price.charAt(0)=='-'){
+                Alert priceAlert;
+                priceAlert = new Alert(Alert.AlertType.ERROR);
+                priceAlert.setTitle("Error Message");
+                priceAlert.setHeaderText(null);
+                priceAlert.setContentText("The price cannot be a negative number");
+                priceAlert.showAndWait();
+                return;
+            }
     
             Alert alert;
             //checking if there are empty fields
@@ -431,6 +440,15 @@ public class ManageHotelConfig implements Initializable {
         String status1 = (String)availableRooms_status.getSelectionModel().getSelectedItem();
         String price1 = availableRooms_price.getText();
         String roomNum1 = availableRooms_roomNumber.getText();
+        if(price1.charAt(0)=='-'){
+                Alert priceAlert;
+                priceAlert = new Alert(Alert.AlertType.ERROR);
+                priceAlert.setTitle("Error Message");
+                priceAlert.setHeaderText(null);
+                priceAlert.setContentText("The price cannot be a negative number");
+                priceAlert.showAndWait();
+                return;
+            }
         String sql = "UPDATE `room` SET `Type`= '"+type1+"'  , `Availability`= '"+status1+"',`Price`='"+price1+"' WHERE `RoomNumber`= '"+roomNum1+"' "; //update the database
         connect = ManageDatabase.connectDb();
 
